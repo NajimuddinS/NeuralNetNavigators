@@ -364,7 +364,7 @@ nav {
 <body>
     <div class="container">
         <nav>
-            <img href="./index.html" style="width: 15%;" src="./assets/Algo.png" alt="">
+            <img id="logo" style="width: 15%;" src="./assets/Algo.png" alt="">
             <div class="nav-links">
                 <a href="#">About Us</a>
                 <a href="#">FAQs</a>
@@ -606,6 +606,7 @@ nav {
                 </div>
               </article>
               <article>
+                <a style="text-decoration: none;color: #000;" href="./pages/stack.html">
                 <div class="overcard">
                   <div class="card">
                     <div class="circles">
@@ -636,6 +637,7 @@ nav {
 
                   </div>
                 </div>
+              </a>
               </article>
               <article>
                 <div class="overcard">
@@ -802,6 +804,11 @@ nav {
     </div>
 </body>
 <script>
+
+document.getElementById("logo").onclick = function() {
+    window.location.href = "./index.html";
+};
+
 window.addEventListener('scroll', function() {
     let scrollPosition = window.scrollY;
     let heroHeight = document.querySelector('.hero-section').offsetHeight;
