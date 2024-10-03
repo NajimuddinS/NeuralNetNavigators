@@ -1,636 +1,921 @@
 <!DOCTYPE html>
 <html lang="en">
-
-  <head>
-
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:100,200,300,400,500,600,700,800,900" rel="stylesheet">
-
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AlgoView</title>
-    
-    <link href="../styles/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="../styles/fontawesome.css">
-    <link rel="stylesheet" href="../styles/learn.css">
-    <link rel="stylesheet" href="../styles/owl.css">
-    <link rel="stylesheet" href="../styles/home.css">
-    <link rel="stylesheet" href="../assets/css/lightbox.css">
-  </head>
+</head>
+<style>
+@import url(https://fonts.googleapis.com/css?family=Share+Tech+Mono);
 
+html {
+    scroll-behavior: smooth;
+}
+
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    max-width: 1300px;
+    align-items: center;
+    margin: auto;
+}
+
+.hero-section {
+    position: relative;
+    height: 100vh;
+    width: 100%;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.background-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    z-index: -1;
+    transition: all 0.5s ease;
+    border-bottom-left-radius: 25px;  
+    border-bottom-right-radius: 25px; 
+}
+
+.content {
+    max-width: 1300px;
+    margin: auto;
+    position: relative;
+    z-index: 2;
+    color: white;
+    padding: 100px 20px 20px 20px; 
+}
+
+nav {
+    margin-left: 100px;
+    margin-right: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: fixed;    
+    top: 0; 
+    width: 90%;
+    padding: 10px 20px;
+    z-index: 3; 
+    left: 0;
+    box-sizing: border-box;
+}
+
+.nav-links{
+    background-color: #9a9a9a66;
+    backdrop-filter: blur(6px);
+    padding: 15px 25px;
+    border-radius:15px;
+}
+
+.nav-links a {
+    margin-right: 20px;
+    color: #ffffff;
+    text-decoration: none;
+}
+
+.nav-links a:hover {
+    margin-right: 20px;
+    color: #7e7e7e;
+    text-decoration: none;
+}
+
+.login{
+    background-color: #9a9a9a66;
+    backdrop-filter: blur(6px);
+    padding: 15px 30px;
+    border-radius:15px;
+    text-decoration:none;
+    color: #ffffff;
+    margin-right: 20px;
+}
+
+.cta-button {
+    display: inline-block;
+    background-color: #fff;
+    color: #000;
+    padding: 10px 20px;
+    border-radius: 25px;
+    text-decoration: none;
+    font-weight: bold;
+    margin-top: 20px;
+}
+
+.cta-button:hover {
+    background-color: #ddd;
+}
+
+.about-section {
+    max-width: 1300px;
+    margin: auto;
+    height: 100vh;
+    padding: 50px;
+    background-color: #ffffff;
+    text-align: center;
+}
+
+.mid{
+  display: flex;
+}
+
+.learn {
+  text-decoration:none;
+  display: inline-block;
+  transition: all 0.2s ease-in;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  color: #090909;
+  padding: 0.7em 1.7em;
+  cursor: pointer;
+  font-size: 18px;
+  border-radius: 0.5em;
+  background: #e8e8e8;
+  border: 2px solid #e8e8e8;
+  padding-left: 1.875rem;
+  padding-right: 1.875rem;
+  justify-content: center;
+  align-items: center;
+}
+
+.learn:active {
+  color: #666;
+  box-shadow: inset 4px 4px 12px #c5c5c5, inset -4px -4px 12px #ffffff;
+}
+
+.learn:before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%) scaleY(1) scaleX(1.25);
+  top: 100%;
+  width: 140%;
+  height: 180%;
+  background-color: rgba(0, 0, 0, 0.05);
+  border-radius: 50%;
+  display: block;
+  transition: all 0.5s 0.1s cubic-bezier(0.55, 0, 0.1, 1);
+  z-index: -1;
+}
+
+.learn:after {
+  content: "";
+  position: absolute;
+  left: 55%;
+  transform: translateX(-50%) scaleY(1) scaleX(1.45);
+  top: 180%;
+  width: 160%;
+  height: 190%;
+  background-color: #4b9fff;
+  border-radius: 50%;
+  display: block;
+  transition: all 0.5s 0.1s cubic-bezier(0.55, 0, 0.1, 1);
+  z-index: -1;
+}
+
+.learn:hover {
+  color: #ffffff;
+  border: 1px solid #4b9fff;
+}
+
+.learn:hover:before {
+  top: -35%;
+  background-color: #4b9fff;
+  transform: translateX(-50%) scaleY(1.3) scaleX(0.8);
+}
+
+.learn:hover:after {
+  top: -45%;
+  background-color: #4b9fff;
+  transform: translateX(-50%) scaleY(1.3) scaleX(0.8);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(405px, 1fr));
+  grid-gap: 20px;
+  align-items: stretch;
+
+}
+
+.grid > article {
+  border: none;
+  box-shadow: none;
+}
+
+.overcard {
+  display: block;
+  width: 410px;
+  height: 400px;
+  background: rgba(250, 250, 250, 0.459);
+  border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+}
+
+.card {
+  position: relative;
+  width: 300px;
+  height: auto;
+  background: transparent;
+  overflow: hidden;
+  display: flex;
+}
+
+.content-card {
+
+  h3{
+    padding-left: 25px;
+    text-align: left;
+  }
+
+}
+
+.algimg{
+    width: 90%;
+  }
+
+.heap{
+  width: 70%;
+}
+
+.circles,
+.browser {
+  height: 30px;
+  display: flex;
+  align-items: center;
+}
+
+.circles {
+  width: 20%;
+  gap: 8px;
+  padding: 0 10px;
+}
+
+.c {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  box-shadow: inset 2px 2px 5px rgba(235, 235, 235, 0.356);
+}
+
+.c:first-child {
+  background-color: red;
+}
+
+.c:nth-child(2) {
+  background-color: rgb(255, 216, 42);
+}
+
+.c:last-child {
+  background-color: green;
+}
+
+.browser {
+  width: 80%;
+  padding: 5px;
+  display: flex;
+  gap: 10px;
+}
+
+.chevrons {
+  display: flex;
+}
+
+.search-bar {
+  position: relative;
+  border: 0.5px solid black;
+  border-radius: 5px;
+  padding: 1px;
+  width: 100%;
+  height: 70%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  color: rgb(88, 88, 88);
+  box-shadow: inset 2px 2px 2px #05050525;
+}
+
+.search-bar svg {
+  position: absolute;
+  left: 10px;
+}
+
+.decode-text {
+  font-family: "Share Tech Mono", monospace;
+  width: 100%;
+  font-size: 30px;
+  font-weight: 700;
+  text-align: center;
+  margin: 8% 0 7% 0;
+}
+.space {
+  display: inline-block;
+  width: 10px;
+}
+.text-animation {
+  display: inline-block;
+  position: relative;
+  color: transparent;
+  text-transform: uppercase;
+  &:before {
+    content: "";
+    color: black;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    background: #0e182d;
+    width: 0;
+    height: 1.2em;
+    -webkit-transform: translate(-50%, -55%);
+    -ms-transform: translate(-50%, -55%);
+    transform: translate(-50%, -55%);
+  }
+
+  &.state-1 {
+    &:before {
+      width: 1px;
+    }
+  }
+  &.state-2 {
+    &:before {
+      width: 0.9em;
+    }
+  }
+  &.state-3 {
+    color: black;
+    &:before {
+      width: 0;
+    }
+  }
+}
+
+</style>
 <body>
-  <nav>
-    <a class="logo" href="/index.html">
-        <img src="../assets/Algo.png" alt="Logo" class="logo">
-    </a>
-    <input type="checkbox" id="sidebar-active" style="display: none;">
-    <label for="sidebar-active" class="open-sidebar-button">
-        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#ffffff">
-            <path d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z" />
-        </svg>  
-    </label>
-    <label id="overlay" for="sidebar-active"></label>
-    <div class="links-container">
-        <label for="sidebar-active" class="close-sidebar-button">
-            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#ffffff">
-                <path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z" />
-            </svg>
-        </label>
-        <a class="al" href="/src/about.html">About</a>
-        <a class="al" href="/src/services.html">Services</a>
-        <a class="al" href="/src/market.html">Market</a>
-        
-        <a class="al" href="/src/blog.html">Blog</a>
-
-        <a class="al" href="/src/learn.html">Learn</a>
-        <a class="al" href="/src/faq.html">FAQ</a>
-        <div class="butss">
-          <a href="./src/signup.html" class="signup"><button> Sign up</button></a>
-          <a href="./src/signin.html" class="signin"><button> Log in</button></a>
-        
-        </div>
-    </div>
-</nav>
-
-  <section class="section main-banner" id="top" data-section="section1">
-      <img id="bg-video" src="./assets/bgmat.gif" alt="">
-
-      <div class="video-overlay header-text">
-          <div class="caption">
-              <!-- <h6></h6> -->
-              <h2 style="font-size: 70px;">Visualize All <em>Algorithms</em></h2>
-              <div class="main-button">
-                  <div class="scroll-to-section"><a href="#section4">Learn more</a></div>
-              </div>
-          </div>
-      </div>
-  </section>
-
-  <section class="features">
     <div class="container">
-      <div class="row">
-        <div class="col-lg-4 col-12">
-          <div class="features-post">
-            <div class="features-content">
-              <div class="content-show">
-                <h4><i class="fa fa-pencil"></i>DSA Algorithms</h4>
-              </div>
-              <div class="content-hide">
-                <p>Data Structures and Algorithms (DSA) involve key data structures like arrays, linked lists, stacks, queues, trees, and graphs, along with algorithms for searching, sorting, recursion, dynamic programming, divide and conquer, backtracking, and graph traversal. Common examples include binary search, quicksort, BFS, DFS, and Dijkstra's algorithm.</p>
-                <div class="scroll-to-section"><a href="#section4">More Info.</a></div>
+        <nav>
+            <img id="logo" style="width: 15%;" src="./assets/Algo.png" alt="">
+            <div class="nav-links">
+                <a href="#">About Us</a>
+                <a href="#">FAQs</a>
             </div>
+            <div class="mid">
+                <a href="#" class="login">Log in</a>
+                <a href="#about" class="learn is--primary button w-inline-block">Learn Now</a>
             </div>
-          </div>
+        </nav>
         </div>
-        <div class="col-lg-4 col-12">
-          <div class="features-post second-features">
-            <div class="features-content">
-              <div class="content-show">
-                <h4><i class="fa fa-graduation-cap"></i>Learn Logic</h4>
-              </div>
-              <div class="content-hide">
-                <p>Learning logic involves mastering propositional and predicate logic, which help in forming and evaluating arguments. It includes deductive and inductive reasoning, along with identifying logical fallacies. Tools like truth tables aid in understanding the truth values of logical expressions.</p>
-                <div class="scroll-to-section"><a href="#section4">Details</a></div>
-            </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-4 col-12">
-          <div class="features-post third-features">
-            <div class="features-content">
-              <div class="content-show">
-                <h4><i class="fa fa-book"></i>Detailed Description</h4>
-              </div>
-              <div class="content-hide">
-                <p>Data Structures and Algorithms (DSA) involve organizing and manipulating data efficiently using structures like arrays, trees, and graphs, and algorithms for sorting, searching, and optimization. Time Complexity (TC) measures the algorithm's performance relative to input size (e.g., O(n), O(log n)), while Space Complexity (SC) assesses the memory required. Efficient DSA design balances optimal time and space usage for problem-solving.</p>
-                <div class="scroll-to-section"><a href="#section4">Read More</a></div>
-            </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+        <div class="hero-section">
+            <video autoplay muted loop class="background-video">
+                <source src="./assets/pf.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <div class="content">
 
-  <!-- <section class="section why-us" data-section="section2">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-12">
-          <div class="section-heading">
-            <h2>Why choose KryptoConnect?</h2>
-          </div>
+                <div class="hero-text">
+                    <h1 style="font-size: 70px;width: 60%;">Transforming Complexity into Clarity</h1>
+                    <p style="font-size: 50px;width: 60%;"> Visualize Algorithms in Action!</p>
+                    <a href="#about" class="cta-button">Get Started</a>
+                </div>
+            </div>
         </div>
-        <div class="col-md-12">
-          <div id='tabs'>
-            <ul>
-              <li><a href='#tabs-1'>Best Education</a></li>
-              <li><a href='#tabs-2'>Top Management</a></li>
-              <li><a href='#tabs-3'>Quality Meeting</a></li>
-            </ul>
-            <section class='tabs-content'>
-              <article id='tabs-1'>
-                <div class="row">
-                  <div class="col-md-6">
-                    <img src="https://www.5paisa.com/finschool/wp-content/uploads/2021/10/Technical-Analysis.svg" alt="">
+
+    <div id="about" class="about-section">
+      <div class="decode-text">
+        <div class="text-animation">A</div>
+        <div class="text-animation">l</div>
+         <div class="text-animation">g</div>
+        <div class="text-animation">o</div>
+        <div class="text-animation">r</div>
+        <div class="text-animation">i</div>
+         <div class="text-animation">t</div>
+        <div class="text-animation">h</div>
+        <div class="text-animation">m</div>
+        <div class="text-animation">s</div>
+        <div class="space"></div>
+
+        <div class="text-animation">L</div>
+        <div class="text-animation">i</div>
+         <div class="text-animation">s</div>
+        <div class="text-animation">t</div>
+        <div class="space"></div>
+
+    </div>
+
+        <div class="alg-container">
+            <main class="grid">
+              <article>
+                <div class="overcard">
+                  <div class="card">
+                    <div class="circles">
+                      <div class="c"></div>
+                      <div class="c"></div>
+                      <div class="c"></div>
+                    </div>
+                    <div class="browser">
+                      <div class="chevrons">
+                        <svg viewBox="0 0 20 20" height="16" width="16" xmlns="http://www.w3.org/2000/svg" data-name="20" id="_20">
+                          <path transform="translate(6.25 3.75)" d="M0,6.25,6.25,0l.875.875L1.75,6.25l5.375,5.375L6.25,12.5Z" id="Fill"></path>
+                        </svg>
+                        <svg viewBox="0 0 20 20" height="16" width="16" xmlns="http://www.w3.org/2000/svg" data-name="20" id="_20">
+                          <path transform="translate(6.625 3.75)" d="M7.125,6.25.875,12.5,0,11.625,5.375,6.25,0,.875.875,0Z" id="Fill"></path>
+                        </svg>
+                      </div>
+                      <div class="search-bar">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="7.89" height="7.887" viewBox="0 0 16.89 16.887">
+                          <path id="Fill" d="M16.006,16.887h0l-4.743-4.718a6.875,6.875,0,1,1,.906-.906l4.719,4.744-.88.88ZM6.887,1.262a5.625,5.625,0,1,0,5.625,5.625A5.631,5.631,0,0,0,6.887,1.262Z" transform="translate(0.003 0)"></path>
+                        </svg>
+                        algoview.io
+                      </div>
+                    </div>
                   </div>
-                  <div class="col-md-6">
-                    <h4>Best Education</h4>
-                    <p>Discover the world of cryptocurrency with our easy-to-understand lessons. Learn the fundamentals of blockchain, trading strategies, and how to invest wisely. Stay updated with the latest trends and insights to grow your crypto knowledge!</p>
+                  <div class="content-card">
+                    <h3>Bubble Sort</h3>
+                    <img class="algimg" src="http://www.xybernetics.com/techtalk/SortingAlgorithmsExplained/images/bubble1.gif" alt="">
                   </div>
                 </div>
               </article>
-              <article id='tabs-2'>
-                <div class="row">
-                  <div class="col-md-6">
-                    <img src="https://www.5paisa.com/finschool/wp-content/uploads/2021/10/g12.svg" alt="">
+              <article>
+                <div class="overcard">
+                  <div class="card">
+                    <div class="circles">
+                      <div class="c"></div>
+                      <div class="c"></div>
+                      <div class="c"></div>
+                    </div>
+                    <div class="browser">
+                      <div class="chevrons">
+                        <svg viewBox="0 0 20 20" height="16" width="16" xmlns="http://www.w3.org/2000/svg" data-name="20" id="_20">
+                          <path transform="translate(6.25 3.75)" d="M0,6.25,6.25,0l.875.875L1.75,6.25l5.375,5.375L6.25,12.5Z" id="Fill"></path>
+                        </svg>
+                        <svg viewBox="0 0 20 20" height="16" width="16" xmlns="http://www.w3.org/2000/svg" data-name="20" id="_20">
+                          <path transform="translate(6.625 3.75)" d="M7.125,6.25.875,12.5,0,11.625,5.375,6.25,0,.875.875,0Z" id="Fill"></path>
+                        </svg>
+                      </div>
+                      <div class="search-bar">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="7.89" height="7.887" viewBox="0 0 16.89 16.887">
+                          <path id="Fill" d="M16.006,16.887h0l-4.743-4.718a6.875,6.875,0,1,1,.906-.906l4.719,4.744-.88.88ZM6.887,1.262a5.625,5.625,0,1,0,5.625,5.625A5.631,5.631,0,0,0,6.887,1.262Z" transform="translate(0.003 0)"></path>
+                        </svg>
+                        algoview.io
+                      </div>
+                    </div>
                   </div>
-                  <div class="col-md-6">
-                    <h4>Top Level</h4>
-                    <p>Equip yourself with executive-level insights into the world of cryptocurrency and blockchain technology. Our specialized courses help top managers make informed strategic decisions in a rapidly evolving digital landscape. Lead your organization confidently into the future of finance.</p>
+                  <div class="content-card">
+                    <h3>Selection Sort</h3>
+                    <img class="algimg" src="http://www.xybernetics.com/techtalk/SortingAlgorithmsExplained/images/SelectionEg01.gif" alt="">
+
                   </div>
                 </div>
               </article>
-              <article id='tabs-3'>
-                <div class="row">
-                  <div class="col-md-6">
-                    <img src="https://www.5paisa.com/finschool/wp-content/uploads/2021/10/10.svg" alt="">
+              <article>
+                <div class="overcard">
+                  <div class="card">
+                    <div class="circles">
+                      <div class="c"></div>
+                      <div class="c"></div>
+                      <div class="c"></div>
+                    </div>
+                    <div class="browser">
+                      <div class="chevrons">
+                        <svg viewBox="0 0 20 20" height="16" width="16" xmlns="http://www.w3.org/2000/svg" data-name="20" id="_20">
+                          <path transform="translate(6.25 3.75)" d="M0,6.25,6.25,0l.875.875L1.75,6.25l5.375,5.375L6.25,12.5Z" id="Fill"></path>
+                        </svg>
+                        <svg viewBox="0 0 20 20" height="16" width="16" xmlns="http://www.w3.org/2000/svg" data-name="20" id="_20">
+                          <path transform="translate(6.625 3.75)" d="M7.125,6.25.875,12.5,0,11.625,5.375,6.25,0,.875.875,0Z" id="Fill"></path>
+                        </svg>
+                      </div>
+                      <div class="search-bar">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="7.89" height="7.887" viewBox="0 0 16.89 16.887">
+                          <path id="Fill" d="M16.006,16.887h0l-4.743-4.718a6.875,6.875,0,1,1,.906-.906l4.719,4.744-.88.88ZM6.887,1.262a5.625,5.625,0,1,0,5.625,5.625A5.631,5.631,0,0,0,6.887,1.262Z" transform="translate(0.003 0)"></path>
+                        </svg>
+                        algoview.io
+                      </div>
+                    </div>
                   </div>
-                  <div class="col-md-6">
-                    <h4>Quality Meeting</h4>
-                    <p>Join our expert-led sessions to deepen your understanding of cryptocurrency and blockchain. Engage in discussions that ensure you grasp key concepts and apply them effectively. Elevate your learning with quality insights from industry professionals.</p>
+                  <div class="content-card">
+                    <h3>Insertion Sort</h3>
+                    <img class="algimg" src="http://www.xybernetics.com/techtalk/SortingAlgorithmsExplained/images/InsertionEg01.gif" alt="">
+
                   </div>
                 </div>
               </article>
-            </section>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section> -->
-<!-- 
-  <section class="section coming-soon" data-section="section3">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-7 col-xs-12">
-          <div class="continer centerIt">
-            <div>
-              <h4>Take <em>any online course</em> and win $326 for your next class</h4>
-              <div class="counter">
+              <article>
+                <div class="overcard">
+                  <div class="card">
+                    <div class="circles">
+                      <div class="c"></div>
+                      <div class="c"></div>
+                      <div class="c"></div>
+                    </div>
+                    <div class="browser">
+                      <div class="chevrons">
+                        <svg viewBox="0 0 20 20" height="16" width="16" xmlns="http://www.w3.org/2000/svg" data-name="20" id="_20">
+                          <path transform="translate(6.25 3.75)" d="M0,6.25,6.25,0l.875.875L1.75,6.25l5.375,5.375L6.25,12.5Z" id="Fill"></path>
+                        </svg>
+                        <svg viewBox="0 0 20 20" height="16" width="16" xmlns="http://www.w3.org/2000/svg" data-name="20" id="_20">
+                          <path transform="translate(6.625 3.75)" d="M7.125,6.25.875,12.5,0,11.625,5.375,6.25,0,.875.875,0Z" id="Fill"></path>
+                        </svg>
+                      </div>
+                      <div class="search-bar">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="7.89" height="7.887" viewBox="0 0 16.89 16.887">
+                          <path id="Fill" d="M16.006,16.887h0l-4.743-4.718a6.875,6.875,0,1,1,.906-.906l4.719,4.744-.88.88ZM6.887,1.262a5.625,5.625,0,1,0,5.625,5.625A5.631,5.631,0,0,0,6.887,1.262Z" transform="translate(0.003 0)"></path>
+                        </svg>
+                        algoview.io
+                      </div>
+                    </div>
+                  </div>
+                  <div class="content-card">
+                    <h3>Merge Sort</h3>
+                    <img class="algimg" src="http://www.xybernetics.com/techtalk/SortingAlgorithmsExplained/images/merge.gif" alt="">
 
-                <div class="days">
-                  <div class="value">00</div>
-                  <span>Days</span>
+                  </div>
                 </div>
+              </article>
+              <article>
+                <div class="overcard">
+                  <div class="card">
+                    <div class="circles">
+                      <div class="c"></div>
+                      <div class="c"></div>
+                      <div class="c"></div>
+                    </div>
+                    <div class="browser">
+                      <div class="chevrons">
+                        <svg viewBox="0 0 20 20" height="16" width="16" xmlns="http://www.w3.org/2000/svg" data-name="20" id="_20">
+                          <path transform="translate(6.25 3.75)" d="M0,6.25,6.25,0l.875.875L1.75,6.25l5.375,5.375L6.25,12.5Z" id="Fill"></path>
+                        </svg>
+                        <svg viewBox="0 0 20 20" height="16" width="16" xmlns="http://www.w3.org/2000/svg" data-name="20" id="_20">
+                          <path transform="translate(6.625 3.75)" d="M7.125,6.25.875,12.5,0,11.625,5.375,6.25,0,.875.875,0Z" id="Fill"></path>
+                        </svg>
+                      </div>
+                      <div class="search-bar">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="7.89" height="7.887" viewBox="0 0 16.89 16.887">
+                          <path id="Fill" d="M16.006,16.887h0l-4.743-4.718a6.875,6.875,0,1,1,.906-.906l4.719,4.744-.88.88ZM6.887,1.262a5.625,5.625,0,1,0,5.625,5.625A5.631,5.631,0,0,0,6.887,1.262Z" transform="translate(0.003 0)"></path>
+                        </svg>
+                        algoview.io
+                      </div>
+                    </div>
+                  </div>
+                  <div class="content-card">
+                    <h3>Quick Sort</h3>
+                    <img class="algimg" src="http://www.xybernetics.com/techtalk/SortingAlgorithmsExplained/images/quick1.gif" alt="">
 
-                <div class="hours">
-                  <div class="value">00</div>
-                  <span>Hours</span>
+                  </div>
                 </div>
+              </article>
+              <article>
+                <div class="overcard">
+                  <div class="card">
+                    <div class="circles">
+                      <div class="c"></div>
+                      <div class="c"></div>
+                      <div class="c"></div>
+                    </div>
+                    <div class="browser">
+                      <div class="chevrons">
+                        <svg viewBox="0 0 20 20" height="16" width="16" xmlns="http://www.w3.org/2000/svg" data-name="20" id="_20">
+                          <path transform="translate(6.25 3.75)" d="M0,6.25,6.25,0l.875.875L1.75,6.25l5.375,5.375L6.25,12.5Z" id="Fill"></path>
+                        </svg>
+                        <svg viewBox="0 0 20 20" height="16" width="16" xmlns="http://www.w3.org/2000/svg" data-name="20" id="_20">
+                          <path transform="translate(6.625 3.75)" d="M7.125,6.25.875,12.5,0,11.625,5.375,6.25,0,.875.875,0Z" id="Fill"></path>
+                        </svg>
+                      </div>
+                      <div class="search-bar">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="7.89" height="7.887" viewBox="0 0 16.89 16.887">
+                          <path id="Fill" d="M16.006,16.887h0l-4.743-4.718a6.875,6.875,0,1,1,.906-.906l4.719,4.744-.88.88ZM6.887,1.262a5.625,5.625,0,1,0,5.625,5.625A5.631,5.631,0,0,0,6.887,1.262Z" transform="translate(0.003 0)"></path>
+                        </svg>
+                        algoview.io
+                      </div>
+                    </div>
+                  </div>
+                  <div class="content-card">
+                    <h3>Heap</h3>
+                    <img class="heap" src="http://www.xybernetics.com/techtalk/SortingAlgorithmsExplained/images/heap1.gif" alt="">
 
-                <div class="minutes">
-                  <div class="value">00</div>
-                  <span>Minutes</span>
+                  </div>
                 </div>
+              </article>
+              <article>
+                <a style="text-decoration: none;color: #000;" href="./pages/stack.html">
+                <div class="overcard">
+                  <div class="card">
+                    <div class="circles">
+                      <div class="c"></div>
+                      <div class="c"></div>
+                      <div class="c"></div>
+                    </div>
+                    <div class="browser">
+                      <div class="chevrons">
+                        <svg viewBox="0 0 20 20" height="16" width="16" xmlns="http://www.w3.org/2000/svg" data-name="20" id="_20">
+                          <path transform="translate(6.25 3.75)" d="M0,6.25,6.25,0l.875.875L1.75,6.25l5.375,5.375L6.25,12.5Z" id="Fill"></path>
+                        </svg>
+                        <svg viewBox="0 0 20 20" height="16" width="16" xmlns="http://www.w3.org/2000/svg" data-name="20" id="_20">
+                          <path transform="translate(6.625 3.75)" d="M7.125,6.25.875,12.5,0,11.625,5.375,6.25,0,.875.875,0Z" id="Fill"></path>
+                        </svg>
+                      </div>
+                      <div class="search-bar">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="7.89" height="7.887" viewBox="0 0 16.89 16.887">
+                          <path id="Fill" d="M16.006,16.887h0l-4.743-4.718a6.875,6.875,0,1,1,.906-.906l4.719,4.744-.88.88ZM6.887,1.262a5.625,5.625,0,1,0,5.625,5.625A5.631,5.631,0,0,0,6.887,1.262Z" transform="translate(0.003 0)"></path>
+                        </svg>
+                        algoview.io
+                      </div>
+                    </div>
+                  </div>
+                  <div class="content-card">
+                    <h3>Stack</h3>
+                    <img class="algimg" src="https://fullyunderstood.com/wp-content/uploads/2020/02/stack.gif" alt="">
 
-                <div class="seconds">
-                  <div class="value">00</div>
-                  <span>Seconds</span>
+                  </div>
                 </div>
+              </a>
+              </article>
+              <article>
+                <div class="overcard">
+                  <div class="card">
+                    <div class="circles">
+                      <div class="c"></div>
+                      <div class="c"></div>
+                      <div class="c"></div>
+                    </div>
+                    <div class="browser">
+                      <div class="chevrons">
+                        <svg viewBox="0 0 20 20" height="16" width="16" xmlns="http://www.w3.org/2000/svg" data-name="20" id="_20">
+                          <path transform="translate(6.25 3.75)" d="M0,6.25,6.25,0l.875.875L1.75,6.25l5.375,5.375L6.25,12.5Z" id="Fill"></path>
+                        </svg>
+                        <svg viewBox="0 0 20 20" height="16" width="16" xmlns="http://www.w3.org/2000/svg" data-name="20" id="_20">
+                          <path transform="translate(6.625 3.75)" d="M7.125,6.25.875,12.5,0,11.625,5.375,6.25,0,.875.875,0Z" id="Fill"></path>
+                        </svg>
+                      </div>
+                      <div class="search-bar">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="7.89" height="7.887" viewBox="0 0 16.89 16.887">
+                          <path id="Fill" d="M16.006,16.887h0l-4.743-4.718a6.875,6.875,0,1,1,.906-.906l4.719,4.744-.88.88ZM6.887,1.262a5.625,5.625,0,1,0,5.625,5.625A5.631,5.631,0,0,0,6.887,1.262Z" transform="translate(0.003 0)"></path>
+                        </svg>
+                        algoview.io
+                      </div>
+                    </div>
+                  </div>
+                  <div class="content-card">
+                    <h3>Queue</h3>
+                    <img class="algimg" src="./assets/queue.gif" alt="">
 
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-5">
-          <div class="right-content">
-            <div class="top-content">
-              <h6>Register your free account and <em>get immediate</em> access to online courses</h6>
-            </div>
-            <form id="contact" action="" method="get">
-              <div class="row">
-                <div class="col-md-12">
-                  <fieldset>
-                    <input name="name" type="text" class="form-control" id="name" placeholder="Your Name" required="">
-                  </fieldset>
+                  </div>
                 </div>
-                <div class="col-md-12">
-                  <fieldset>
-                    <input name="email" type="text" class="form-control" id="email" placeholder="Your Email" required="">
-                  </fieldset>
+              </article>
+              <article>
+                <div class="overcard">
+                  <div class="card">
+                    <div class="circles">
+                      <div class="c"></div>
+                      <div class="c"></div>
+                      <div class="c"></div>
+                    </div>
+                    <div class="browser">
+                      <div class="chevrons">
+                        <svg viewBox="0 0 20 20" height="16" width="16" xmlns="http://www.w3.org/2000/svg" data-name="20" id="_20">
+                          <path transform="translate(6.25 3.75)" d="M0,6.25,6.25,0l.875.875L1.75,6.25l5.375,5.375L6.25,12.5Z" id="Fill"></path>
+                        </svg>
+                        <svg viewBox="0 0 20 20" height="16" width="16" xmlns="http://www.w3.org/2000/svg" data-name="20" id="_20">
+                          <path transform="translate(6.625 3.75)" d="M7.125,6.25.875,12.5,0,11.625,5.375,6.25,0,.875.875,0Z" id="Fill"></path>
+                        </svg>
+                      </div>
+                      <div class="search-bar">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="7.89" height="7.887" viewBox="0 0 16.89 16.887">
+                          <path id="Fill" d="M16.006,16.887h0l-4.743-4.718a6.875,6.875,0,1,1,.906-.906l4.719,4.744-.88.88ZM6.887,1.262a5.625,5.625,0,1,0,5.625,5.625A5.631,5.631,0,0,0,6.887,1.262Z" transform="translate(0.003 0)"></path>
+                        </svg>
+                        algoview.io
+                      </div>
+                    </div>
+                  </div>
+                  <div class="content-card">
+                    <h3>Sliding Window</h3>
+                    <img class="algimg" src="https://miro.medium.com/v2/resize:fit:1400/1*3I0A6MhO3HXVWSaxCzTl5Q.gif" alt="">
+
+                  </div>
                 </div>
-                <div class="col-md-12">
-                  <fieldset>
-                    <input name="phone-number" type="text" class="form-control" id="phone-number" placeholder="Your Phone Number" required="">
-                  </fieldset>
+              </article>
+              <article>
+                <div class="overcard">
+                  <div class="card">
+                    <div class="circles">
+                      <div class="c"></div>
+                      <div class="c"></div>
+                      <div class="c"></div>
+                    </div>
+                    <div class="browser">
+                      <div class="chevrons">
+                        <svg viewBox="0 0 20 20" height="16" width="16" xmlns="http://www.w3.org/2000/svg" data-name="20" id="_20">
+                          <path transform="translate(6.25 3.75)" d="M0,6.25,6.25,0l.875.875L1.75,6.25l5.375,5.375L6.25,12.5Z" id="Fill"></path>
+                        </svg>
+                        <svg viewBox="0 0 20 20" height="16" width="16" xmlns="http://www.w3.org/2000/svg" data-name="20" id="_20">
+                          <path transform="translate(6.625 3.75)" d="M7.125,6.25.875,12.5,0,11.625,5.375,6.25,0,.875.875,0Z" id="Fill"></path>
+                        </svg>
+                      </div>
+                      <div class="search-bar">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="7.89" height="7.887" viewBox="0 0 16.89 16.887">
+                          <path id="Fill" d="M16.006,16.887h0l-4.743-4.718a6.875,6.875,0,1,1,.906-.906l4.719,4.744-.88.88ZM6.887,1.262a5.625,5.625,0,1,0,5.625,5.625A5.631,5.631,0,0,0,6.887,1.262Z" transform="translate(0.003 0)"></path>
+                        </svg>
+                        algoview.io
+                      </div>
+                    </div>
+                  </div>
+                  <div class="content-card">
+                    <h3>Binary Search</h3>
+                    <img class="algimg" src="https://d18l82el6cdm1i.cloudfront.net/uploads/bePceUMnSG-binary_search_gif.gif" alt="">
+
+                  </div>
                 </div>
-                <div class="col-md-12">
-                  <fieldset>
-                    <button type="submit" id="form-submit" class="button">Get it now</button>
-                  </fieldset>
+              </article>
+              <article>
+                <div class="overcard">
+                  <div class="card">
+                    <div class="circles">
+                      <div class="c"></div>
+                      <div class="c"></div>
+                      <div class="c"></div>
+                    </div>
+                    <div class="browser">
+                      <div class="chevrons">
+                        <svg viewBox="0 0 20 20" height="16" width="16" xmlns="http://www.w3.org/2000/svg" data-name="20" id="_20">
+                          <path transform="translate(6.25 3.75)" d="M0,6.25,6.25,0l.875.875L1.75,6.25l5.375,5.375L6.25,12.5Z" id="Fill"></path>
+                        </svg>
+                        <svg viewBox="0 0 20 20" height="16" width="16" xmlns="http://www.w3.org/2000/svg" data-name="20" id="_20">
+                          <path transform="translate(6.625 3.75)" d="M7.125,6.25.875,12.5,0,11.625,5.375,6.25,0,.875.875,0Z" id="Fill"></path>
+                        </svg>
+                      </div>
+                      <div class="search-bar">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="7.89" height="7.887" viewBox="0 0 16.89 16.887">
+                          <path id="Fill" d="M16.006,16.887h0l-4.743-4.718a6.875,6.875,0,1,1,.906-.906l4.719,4.744-.88.88ZM6.887,1.262a5.625,5.625,0,1,0,5.625,5.625A5.631,5.631,0,0,0,6.887,1.262Z" transform="translate(0.003 0)"></path>
+                        </svg>
+                        algoview.io
+                      </div>
+                    </div>
+                  </div>
+                  <div class="content-card">
+                    <h3>Two Pointers</h3>
+                    <img class="algimg" src="./assets/TP.gif" alt="">
+
+                  </div>
                 </div>
-              </div>
-            </form>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section> -->
+              </article>
+              <article>
+                <div class="overcard">
+                  <div class="card">
+                    <div class="circles">
+                      <div class="c"></div>
+                      <div class="c"></div>
+                      <div class="c"></div>
+                    </div>
+                    <div class="browser">
+                      <div class="chevrons">
+                        <svg viewBox="0 0 20 20" height="16" width="16" xmlns="http://www.w3.org/2000/svg" data-name="20" id="_20">
+                          <path transform="translate(6.25 3.75)" d="M0,6.25,6.25,0l.875.875L1.75,6.25l5.375,5.375L6.25,12.5Z" id="Fill"></path>
+                        </svg>
+                        <svg viewBox="0 0 20 20" height="16" width="16" xmlns="http://www.w3.org/2000/svg" data-name="20" id="_20">
+                          <path transform="translate(6.625 3.75)" d="M7.125,6.25.875,12.5,0,11.625,5.375,6.25,0,.875.875,0Z" id="Fill"></path>
+                        </svg>
+                      </div>
+                      <div class="search-bar">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="7.89" height="7.887" viewBox="0 0 16.89 16.887">
+                          <path id="Fill" d="M16.006,16.887h0l-4.743-4.718a6.875,6.875,0,1,1,.906-.906l4.719,4.744-.88.88ZM6.887,1.262a5.625,5.625,0,1,0,5.625,5.625A5.631,5.631,0,0,0,6.887,1.262Z" transform="translate(0.003 0)"></path>
+                        </svg>
+                        algoview.io
+                      </div>
+                    </div>
+                  </div>
+                  <div class="content-card">
+                    <h3>Linked List</h3>
+                    <img class="algimg" src="./assets/LL.gif" alt="">
 
-  <section class="section courses" data-section="section4">
-    <div class="container-fluid">
-      <div class="row">
-        <div class="col-md-12">
-          <div class="section-heading">
-            <h2>List of Algorithms</h2>
-          </div>
-        </div>
-        <div class="owl-carousel owl-theme">
-          <div class="item">
-            <img src="../assets/courses-03.jpg" alt="Course #1">
-            <div class="down-content">
-              <h4>Digital Marketing</h4>
-              <p>Learn proven strategies to trade cryptocurrencies effectively and maximize your profits. Stay ahead with insights on market trends, technical analysis, and risk management.</p>
-              <div class="author-image">
-                <img src="../assets/author-01.png" alt="Author 1">
-              </div>
-              <div class="text-button-pay">
-                <a href="#">Pay </i></a>
-              </div>
-            </div>
-          </div>
-          <div class="item">
-            <img src="../assets/courses-02.jpg" alt="Course #2">
-            <div class="down-content">
-              <h4>Business World</h4>
-              <p>Learn proven strategies to trade cryptocurrencies effectively and maximize your profits. Stay ahead with insights on market trends, technical analysis, and risk management.</p>
-              <div class="author-image">
-                <img src="../assets/author-02.png" alt="Author 2">
-              </div>
-              <div class="text-button-free">
-                <a href="#">Free </i></a>
-              </div>
-            </div>
-          </div>
-          <div class="item">
-            <img src="../assets/courses-03.jpg" alt="Course #3">
-            <div class="down-content">
-              <h4>Media Technology</h4>
-              <p>Learn proven strategies to trade cryptocurrencies effectively and maximize your profits. Stay ahead with insights on market trends, technical analysis, and risk management.</p>
-              <div class="author-image">
-                <img src="../assets/author-03.png" alt="Author 3">
-              </div>
-              <div class="text-button-pay">
-                <a href="#">Pay </i></a>
-              </div>
-            </div>
-          </div>
-          <div class="item">
-            <img src="../assets/courses-02.jpg" alt="Course #4">
-            <div class="down-content">
-              <h4>Communications</h4>
-              <p>Learn proven strategies to trade cryptocurrencies effectively and maximize your profits. Stay ahead with insights on market trends, technical analysis, and risk management.</p>
-              <div class="author-image">
-                <img src="../assets/author-04.png" alt="Author 4">
-              </div>
-              <div class="text-button-free">
-                <a href="#">Free </i></a>
-              </div>
-            </div>
-          </div>
-          <div class="item">
-            <img src="../assets/courses-05.jpg" alt="">
-            <div class="down-content">
-              <h4>Business Ethics</h4>
-              <p>Learn proven strategies to trade cryptocurrencies effectively and maximize your profits. Stay ahead with insights on market trends, technical analysis, and risk management.</p>
-              <div class="author-image">
-                <img src="../assets/author-05.png" alt="">
-              </div>
-              <div class="text-button-pay">
-                <a href="#">Pay </i></a>
-              </div>
-            </div>
-          </div>
-          <div class="item">
-            <img src="../assets/courses-03.jpg" alt="">
-            <div class="down-content">
-              <h4>Creating a Portfolio</h4>
-              <p>Learn proven strategies to trade cryptocurrencies effectively and maximize your profits. Stay ahead with insights on market trends, technical analysis, and risk management.</p>
-              <div class="author-image">
-                <img src="../assets/author-01.png" alt="">
-              </div>
-              <div class="text-button-free">
-                <a href="#">Free </i></a>
-              </div>
-            </div>
-          </div>
-          <div class="item">
-            <img src="../assets/courses-02.jpg" alt="">
-            <div class="down-content">
-              <h4>Trading Strategies</h4>
-              <p>Learn proven strategies to trade cryptocurrencies effectively and maximize your profits. Stay ahead with insights on market trends, technical analysis, and risk management.</p>
-              <div class="author-image">
-                <img src="../assets/author-02.png" alt="">
-              </div>
-              <div class="text-button-free">
-                <a href="#">Free </i></a>
-              </div>
-            </div>
-          </div>
-          <div class="item">
-            <img src="../assets/courses-03.jpg" alt="">
-            <div class="down-content">
-              <h4>Trading Algorithm</h4>
-              <p>Learn proven strategies to trade cryptocurrencies effectively and maximize your profits. Stay ahead with insights on market trends, technical analysis, and risk management.</p>
-              <div class="author-image">
-                <img src="../assets/author-03.png" alt="">
-              </div>
-              <div class="text-button-pay">
-                <a href="#">Pay </i></a>
-              </div>
-            </div>
-          </div>
-          <div class="item">
-            <img src="../assets/courses-02.jpg" alt="">
-            <div class="down-content">
-              <h4>Creating a Portfolio</h4>
-              <p>Learn proven strategies to trade cryptocurrencies effectively and maximize your profits. Stay ahead with insights on market trends, technical analysis, and risk management.</p>
-              <div class="author-image">
-                <img src="../assets/author-04.png" alt="">
-              </div>
-              <div class="text-button-pay">
-                <a href="#">Pay </i></a>
-              </div>
-            </div>
-          </div>
-          <div class="item">
-            <img src="../assets/courses-05.jpg" alt="">
-            <div class="down-content">
-              <h4>Digital Arts</h4>
-              <p>Learn proven strategies to trade cryptocurrencies effectively and maximize your profits. Stay ahead with insights on market trends, technical analysis, and risk management.</p>
-              <div class="author-image">
-                <img src="../assets/author-05.png" alt="">
-              </div>
-              <div class="text-button-free">
-                <a href="#">Free </i></a>
-              </div>
-            </div>
-          </div>
-          <div class="item">
-            <img src="../assets/courses-03.jpg" alt="">
-            <div class="down-content">
-              <h4>Media Streaming</h4>
-              <p>Learn proven strategies to trade cryptocurrencies effectively and maximize your profits. Stay ahead with insights on market trends, technical analysis, and risk management.</p>
-              <div class="author-image">
-                <img src="../assets/author-01.png" alt="">
-              </div>
-              <div class="text-button-pay">
-                <a href="#">Pay </i></a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-  
-
-  <!-- <section class="section video" data-section="section5">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-6 align-self-center">
-          <div class="left-content">
-            <span>our presentation is for you</span>
-            <h4>Watch the video to learn more <em>about Grad School</em></h4>
-            <p>You are NOT allowed to redistribute this template ZIP file on any template collection website. However, you can use this template to convert into a specific theme for any kind of CMS platform such as WordPress. You may <a rel="nofollow" href="https://templatemo.com/contact" target="_parent">contact TemplateMo</a> for details.
-            <br><br>Suspendisse tincidunt, magna ut finibus rutrum, libero dolor euismod odio, nec interdum quam felis non ante.</p>
-            <div class="main-button"><a rel="nofollow" href="https://fb.com/templatemo" target="_parent">External URL</a></div>
-          </div>
-        </div>
-        <div class="col-md-6">
-          <article class="video-item">
-            <div class="video-caption">
-              <h4>Power HTML Template</h4>
-            </div>
-            <figure>
-              <a href="https://www.youtube.com/watch?v=r9LtOG6pNUw" class="play"><img src="assets/images/main-thumb.png"></a>
-            </figure>
-          </article>
-        </div>
-      </div>
-    </div>
-  </section> -->
-
-  <section class="section contact" data-section="section6">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-12">
-          <div class="section-heading">
-            <h2>Let’s Keep In Touch</h2>
-          </div>
-        </div>
-        <div class="col-md-6">
-        
-        <!-- Do you need a working HTML contact-form script?
-                	
-                    Please visit https://templatemo.com/contact page -->
-                    
-          <form id="contact" action="" method="post">
-            <div class="row">
-              <div class="col-md-6">
-                  <fieldset>
-                    <input name="name" type="text" class="form-control" id="name" placeholder="Your Name" required="">
-                  </fieldset>
+                  </div>
                 </div>
-                <div class="col-md-6">
-                  <fieldset>
-                    <input name="email" type="text" class="form-control" id="email" placeholder="Your Email" required="">
-                  </fieldset>
-                </div>
-              <div class="col-md-12">
-                <fieldset>
-                  <textarea name="message" rows="6" class="form-control" id="message" placeholder="Your message..." required=""></textarea>
-                </fieldset>
-              </div>
-              <div class="col-md-12">
-                <fieldset>
-                  <button type="submit" id="form-submit" class="button">Send Message Now</button>
-                </fieldset>
-              </div>
-            </div>
-          </form>
-        </div>
-        <div class="col-md-6">
-          <div id="map">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3958628.916434657!2d73.01750355153403!3d14.320228367093069!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae1525f3226a65%3A0x9d0c72b3bd41f2ef!2sMasai%20School!5e0!3m2!1sen!2sin!4v1725717793633!5m2!1sen!2sin" width="100%" height="422px" frameborder="0" style="border:0" allowfullscreen></iframe>
+              </article>
+            </main>
           </div>
-        </div>
-      </div>
     </div>
-    <div style="height: 200px;">
-
-    </div>
-    
-
-  </section>
-  <footer>
-    <div class="joinSection">
-      <div class="joinDesc">
-        <h1 class="sectionHeader">Join with us</h1>
-        <p class="sectionPara">
-          Join Now to Transform Complex Concepts into Visual Insights!
-        </p>
-      </div>
-       <div class="btnContainer">
-        <a href="./src/signin.html">
-          <button class="btn1">JOIN NOW</button>
-        </a>
-     
-    </div>
-      <!-- <button class="btn1">JOIN NOW</button> -->
-    </div>
-    <!-- <div class="btnContainer">
-      <button class="btn1">Get In Touch</button>
-    </div> -->
-
-    <div class="footerlinksContainer">
-      <div class="footerAboutus">
-        <div>
-          <img width="300px" src="../assets/logo.png" alt="" srcset="" />
-        </div>
-        <p class="darkPara">
-          An algorithm visualizer is a tool that graphically represents the execution of algorithms, helping users understand their behavior, efficiency, and underlying processes through interactive animations and visual aids.
-        </p>
-        <div class="footersociallinkContainer">
-          <a href="https://www.facebook.com/"
-            ><img class="sociallink" src="./img/fabook-icon-white.svg" alt=""
-          /></a>
-          <a
-            href="https://x.com/i/flow/login?input_flow_data=%7B%22requested_variant%22%3A%22eyJteCI6IjIifQ%3D%3D%22%7D"
-            ><img
-              class="sociallink"
-              src="./img/twitter-icon-white.svg"
-              alt=""
-          /></a>
-          <a
-            href="https://www.linkedin.com/uas/login?session_redirect=https%3A%2F%2Fwww.linkedin.com%2Ffeed%2F"
-            ><img
-              class="sociallink"
-              src="./img/inkedin-icon-white.svg"
-              alt=""
-          /></a>
-          <a href="https://wa.me/+91112489987"
-            ><img
-              class="sociallink"
-              src="./img/whatsapp-icon-white.svg"
-              alt=""
-          /></a>
-        </div>
-      </div>
-
-      <div class="footerlink">
-        <h2 class="linkTitle">Explore</h2>
-        <a href="#" class="eachLink">About us</a>
-        <a href="src/faq.html" class="eachLink">FAQ</a>
-        <a href="src/blog.html" class="eachLink">Blog</a>
-        <a href="#" class="eachLink">Contact</a>
-      </div>
-
-      <div class="footerlink">
-        <h2 class="linkTitle">Service</h2>
-        <a href="#" class="eachLink">Mining</a>
-        <a href="#" class="eachLink">Control Data</a>
-        <a href="#" class="eachLink">Design</a>
-        <a href="#" class="eachLink">Security</a>
-      </div>
-
-      <div class="footerlink">
-        <h2 class="linkTitle">Resource</h2>
-        <a href="#" class="eachLink">Style Guide</a>
-        <a href="#" class="eachLink">Change Log</a>
-        <a href="#" class="eachLink">License</a>
-      </div>
-    </div>
-
-    <div class="footerCopyright">
-      <p style="color: aliceblue;">
-        &copy; 2024 design and developed by
-        <a href="#" class="developedBy">AlgoView</a>.
-      </p>
-    </div>
-  </footer>
-
-
-
-  <!-- Scripts -->
-  <!-- Bootstrap core JavaScript -->
-    <script src="../src/jquery.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="../src/isotope.min.js"></script>
-    <script src="../src/owl-carousel.js"></script>
-    <script src="../src/lightbox.js"></script>
-    <script src="../src/tabs.js"></script>
-    <script src="../src/video.js"></script>
-    <script src="../src/slick-slider.js"></script>
-    <script src="../src/custom.js"></script>
-    <script>
-
-        var showSection = function showSection(section, isAnimate) {
-          var
-          direction = section.replace(/#/, ''),
-          reqSection = $('.section').filter('[data-section="' + direction + '"]'),
-          reqSectionPos = reqSection.offset().top - 0;
-
-          if (isAnimate) {
-            $('body, html').animate({
-              scrollTop: reqSectionPos },
-            800);
-          } else {
-            $('body, html').scrollTop(reqSectionPos);
-          }
-
-        };
-
-        var checkSection = function checkSection() {
-          $('.section').each(function () {
-            var
-            $this = $(this),
-            topEdge = $this.offset().top - 80,
-            bottomEdge = topEdge + $this.height(),
-            wScroll = $(window).scrollTop();
-            if (topEdge < wScroll && bottomEdge > wScroll) {
-              var
-              currentId = $this.data('courses'),
-              reqLink = $('a').filter('[href*=\\#' + currentId + ']');
-              reqLink.closest('li').addClass('active').
-              siblings().removeClass('active');
-            }
-          });
-        };
-
-        $('.main-menu, .scroll-to-section').on('click', 'a', function (e) {
-          if($(e.target).hasClass('external')) {
-            return;
-          }
-          e.preventDefault();
-          $('#menu').removeClass('active');
-          showSection($(this).attr('href'), true);
-        });
-
-        $(window).scroll(function () {
-          checkSection();
-        });
-
-
-      window.addEventListener('scroll', function() {
-          var nav = document.querySelector('nav');
-          if (window.scrollY > 50) {
-              nav.classList.add('scrolled');
-          } else {
-              nav.classList.remove('scrolled');
-          }
-      });
-      </script>
-      <script src="https://kit.fontawesome.com/e1bd217f15.js" crossorigin="anonymous"></script>
 </body>
+<script>
+
+document.getElementById("logo").onclick = function() {
+    window.location.href = "./index.html";
+};
+
+window.addEventListener('scroll', function() {
+    let scrollPosition = window.scrollY;
+    let heroHeight = document.querySelector('.hero-section').offsetHeight;
+    let video = document.querySelector('.background-video');
+    let maxMargin = 5;
+    let maxScroll = heroHeight;
+    let scrollPercent = Math.min(scrollPosition / maxScroll, 1);
+
+    let newWidth = 100 - (scrollPercent * maxMargin * 2);
+    let newMargin = scrollPercent * maxMargin;
+
+    video.style.width = `${newWidth}%`;
+    video.style.marginLeft = `${newMargin}%`;
+    video.style.marginRight = `${newMargin}%`;
+});
+
+window.addEventListener('scroll', function() {
+    let scrollPosition = window.scrollY;
+    let heroHeight = document.querySelector('.hero-section').offsetHeight;
+    let video = document.querySelector('.background-video');
+
+    let maxMargin = 5;
+    let maxScroll = heroHeight;
+    let scrollPercent = Math.min(scrollPosition / maxScroll, 1);
+
+    let newWidth = 100 - (scrollPercent * maxMargin * 2);
+    let newMargin = scrollPercent * maxMargin;
+
+    video.style.width = `${newWidth}%`;
+    video.style.marginLeft = `${newMargin}%`;
+    video.style.marginRight = `${newMargin}%`;
+
+    let aboutSection = document.getElementById('about');
+    let navbar = document.querySelector('nav');
+
+    if (scrollPosition >= aboutSection.offsetTop) {
+        navbar.style.display = 'none';  
+    } else {
+        navbar.style.display = 'flex';  
+    }
+});
+
+function decodeText(){
+    var text = document.getElementsByClassName('decode-text')[0];
+
+    var state = [];
+    for(var i = 0, j = text.children.length; i < j; i++ ){
+        text.children[i].classList.remove('state-1','state-2','state-3');
+        state[i] = i;
+    }
+
+    var shuffled = shuffle(state);
+
+    for(var i = 0, j = shuffled.length; i < j; i++ ){
+        var child = text.children[shuffled[i]];
+        classes = child.classList;
+
+        var state1Time = Math.round( Math.random() * (1000 - 300) ) + 50;
+        if(classes.contains('text-animation')){ 
+            setTimeout(firstStages.bind(null, child), state1Time);
+        }
+    }
+}
+
+function firstStages(child){
+    if( child.classList.contains('state-2') ){   
+        child.classList.add('state-3');
+    } else if( child.classList.contains('state-1') ){
+        child.classList.add('state-2')
+    } else if( !child.classList.contains('state-1') ){
+        child.classList.add('state-1');
+        setTimeout(secondStages.bind(null, child), 100);
+    }    
+}
+function secondStages(child){
+    if( child.classList.contains('state-1') ){
+        child.classList.add('state-2')
+        setTimeout(thirdStages.bind(null, child), 100);
+    } 
+    else if( !child.classList.contains('state-1') )
+    {
+        child.classList.add('state-1')
+    }
+}
+function thirdStages(child){
+    if( child.classList.contains('state-2') ){
+        child.classList.add('state-3')
+    }
+}
+
+function shuffle(array) {
+    var currentIndex = array.length, temporaryValue, randomIndex;
+
+    while (0 !== currentIndex) {
+
+        randomIndex = Math.floor(Math.random() * currentIndex);
+        currentIndex -= 1;
+
+        temporaryValue = array[currentIndex];
+        array[currentIndex] = array[randomIndex];
+        array[randomIndex] = temporaryValue;
+    }
+    return array;
+}
+
+decodeText();
+
+setInterval(function(){ decodeText(); }, 3000);
+</script>
 </html>
