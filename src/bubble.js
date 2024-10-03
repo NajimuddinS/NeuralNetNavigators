@@ -33,11 +33,9 @@ function displaySorting(ar){
                 let v=ar[j]
                 ar[j]=ar[j+1]
                 ar[j+1]=v
-                // li.innerText=ar[j+1]
-                // innerLi1.innerText=ar[j]
-                // innerLi2.innerText=ar[j+1]
+                
             }
-            // li.append(innerLi1,innerLi2)
+
         }
         ul.append(li)
     }
