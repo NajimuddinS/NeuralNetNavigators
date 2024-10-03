@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>Max Heap Visualizer</title>
+  <link rel="stylesheet" href="../styles/style.css">
+   <link rel="stylesheet" href="../styles/bs.min.css">
+</head>
+<style>
+    .card-footer{
+      padding-top:15px;
+      padding-bottom:15px;
+      border-radius: 15px;
+    }
+    .row1{
+      margin: auto;
+    }
+
+    .input-group-append{
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      margin: auto;
+    }
+    .fbtns{
+      display: flex;
+    }
+    #heap-container {
+            width: 700px;
+            height: 700px;
+            position: relative;
+    }
+    .node {
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        background-color: #33ff00;
+        color: rgb(0, 0, 0);
+        font-family: 'Courier New', Courier, monospace;
+        font-weight: 800;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+        transition: all 0.5s ease;
+        font-size: 18px;
+        z-index: 2;
+    }
+    .edge {
+        position: absolute;
+        background-color: #00ff0d;
+        height: 2px;
+        transform-origin: 0 50%;
+        z-index: 1;
+    }
+    #controls {
+        margin-top: 20px;
+    }
+    .bottomDecor1{
+        display: flex;
+        justify-content: flex-end;
+        position: relative;
+        bottom: 60px;
+    }
+
+</style>
+<body>
+  <div class="root">
+    <main class="computerContainer">
+      <section class="screenContainer">
+        <div class="screenFrame">
+          <div class="screen">
+            <div class="terminal">
+              <div class="outputContainer">
+                <!-- Screen -->
+                <div id="heap-container"></div>
+              </div>
+
+              
+             
+          </div>
+        </div>
+      </section>
+      <div class="card-footer">
+        <div class="input-group">
+          <div class="input-group-append">
+            <input type="text" id="insert-value" class="form-control" placeholder="Enter" required>
+              <button type="button" class="btn button" onclick="insertValue()">
+                <div class="button-top-push">Insert</div>
+                <div class="button-bottom-push"></div>
+                <div class="button-base-push"></div>
+              </button>
+              <span style="width: 10px;"> </span>
+              <button type="button" class="btn button" onclick="removeMax()">
+                <div class="button-top">Remove Max</div>
+                <div class="button-bottom"></div>
+                <div class="button-base"></div>
+              </button>
+          </div>
+
+        </div>
+      </div>
+      <section class="bodyDecor">
+        <div class="floppyDriveContainer">
+          <div class="floppyDrive">
+            <div class="floppyShade"></div>
+            <div class="floppyShadeDarker"></div>
+            <div class="floppySlot"></div>
+          </div>
+        </div>
+        <div class="logoContainer">
+          <div class="logo"></div>
+        </div>
+      </section>
+      <section class="bottomDecor1">
+        <div class="bottomButton"></div>
+      </section>
+    </main>
+  </div>
+  <div style="height: 100px;">
+
+  </div>
+</body>
+  <script>
+        class Heap {
+            constructor() {
+                this.heap = [];
+            }
+
+            getParentIndex(i) {
+                return Math.floor((i - 1) / 2);
+            }
+
+            getLeftChildIndex(i) {
+                return 2 * i + 1;
+            }
+
+            getRightChildIndex(i) {
+                return 2 * i + 2;
+            }
+
+            swap(i, j) {
+                [this.heap[i], this.heap[j]] = [this.heap[j], this.heap[i]];
+            }
+
+            insert(value) {
+                this.heap.push(value);
+                this.heapifyUp(this.heap.length - 1);
+            }
+
+            heapifyUp(i) {
+                let currentIndex = i;
+                while (currentIndex > 0 && this.heap[currentIndex] > this.heap[this.getParentIndex(currentIndex)]) {
+                    this.swap(currentIndex, this.getParentIndex(currentIndex));
+                    currentIndex = this.getParentIndex(currentIndex);
+                }
+            }
+
+            removeMax() {
+                if (this.heap.length === 0) return null;
+                if (this.heap.length === 1) return this.heap.pop();
+
+                const max = this.heap[0];
+                this.heap[0] = this.heap.pop();
+                this.heapifyDown(0);
+                return max;
+            }
+
+            heapifyDown(i) {
+                let currentIndex = i;
+                let maxIndex = currentIndex;
+                const leftChild = this.getLeftChildIndex(currentIndex);
+                const rightChild = this.getRightChildIndex(currentIndex);
+
+                if (leftChild < this.heap.length && this.heap[leftChild] > this.heap[maxIndex]) {
+                    maxIndex = leftChild;
+                }
+
+                if (rightChild < this.heap.length && this.heap[rightChild] > this.heap[maxIndex]) {
+                    maxIndex = rightChild;
+                }
+
+                if (currentIndex !== maxIndex) {
+                    this.swap(currentIndex, maxIndex);
+                    this.heapifyDown(maxIndex);
+                }
+            }
+        }
+
+        const heap = new Heap();
+        const container = document.getElementById('heap-container');
+
+        function drawHeap() {
+            container.innerHTML = '';
+            const levelHeight = 120;
+            const nodeSize = 60;
+            const containerWidth = container.offsetWidth;
+            const containerHeight = container.offsetHeight;
+
+            function getNodePosition(index) {
+                const level = Math.floor(Math.log2(index + 1));
+                const nodesInLevel = Math.pow(2, level);
+                const position = index - (Math.pow(2, level) - 1);
+                const totalLevels = Math.floor(Math.log2(heap.heap.length)) + 1;
+                const totalWidth = Math.min(containerWidth, nodesInLevel * (nodeSize + 120)); 
+
+                const leftOffset = (position + 0.5) * (totalWidth / nodesInLevel);
+
+                return {
+                    x: leftOffset + (containerWidth - totalWidth) / 2,
+                    y: level * levelHeight + nodeSize / 2 + (containerHeight - totalLevels * levelHeight) / 2
+                };
+            }
+
+            function drawEdge(startX, startY, endX, endY) {
+                const edge = document.createElement('div');
+                edge.className = 'edge';
+                const length = Math.sqrt(Math.pow(endX - startX, 2) + Math.pow(endY - startY, 2));
+                const angle = Math.atan2(endY - startY, endX - startX);
+                
+                edge.style.width = `${length}px`;
+                edge.style.left = `${startX}px`;
+                edge.style.top = `${startY - 15}px`;
+                edge.style.transform = `rotate(${angle}rad)`;
+                
+                container.appendChild(edge);
+            }
+
+            heap.heap.forEach((value, index) => {
+                const node = document.createElement('div');
+                node.className = 'node';
+                node.textContent = value;
+
+                const position = getNodePosition(index);
+                node.style.left = `${position.x - nodeSize / 2}px`;
+                node.style.top = `${position.y - nodeSize / 2}px`;
+
+                container.appendChild(node);
+
+                if (index > 0) {
+                    const parentIndex = heap.getParentIndex(index);
+                    const parentPosition = getNodePosition(parentIndex);
+                    drawEdge(parentPosition.x, parentPosition.y, position.x, position.y);
+                }
+            });
+        }
+
+        function insertValue() {
+            const input = document.getElementById('insert-value');
+            const value = parseInt(input.value);
+            if (!isNaN(value)) {
+                heap.insert(value);
+                input.value = '';
+                drawHeap();
+            }
+        }
+
+        function removeMax() {
+            heap.removeMax();
+            drawHeap();
+        }
+  </script>
+</html>
