@@ -62,6 +62,10 @@ li {
     font-weight: bold; /* Optional: make the text bold */
 }
 
+.overview-container{
+    margin-top: 50px;
+}
+
 
 
 /* Fade-in animation for main heading */
@@ -133,4 +137,71 @@ h2:nth-child(even) {
 
 h2:nth-child(odd) {
     color: #41096c; /* Orange for odd headings */
+}
+
+
+
+/* Array container style */
+#array-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px auto;
+}
+
+input {
+    width: 25rem;
+    height: auto;
+    padding: 10px;
+    margin: 10px;
+    font-size: 18px;
+    border-radius: 7px;
+    border: 1px solid #868286;
+}
+
+button {
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 10px;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+    margin: 10px;
+}
+
+button:hover {
+    background-color: #071729;
+}
+
+.number-box {
+    display: inline-block;
+    margin: 15px 5px 20px 10px;
+    padding: 10px;
+    border: 1px solid #007bff;
+    border-radius: 5px;
+    background-color: #f8f9fa;
+    color: #333;
+    width: 1.3rem;
+    text-align: center;
+}
+
+.highlight-box {
+    background-color: #137972;
+    color: white;
+}
+
+.result-message {
+    margin: auto;
+    font-weight: bold;
+    color: green;
+}
+
+.result-message {
+    align-items: center;
+    align-content: center;
+    display: flex;
+    justify-content: center;
+    font-size: 1.2em;
+    color: #333;
 }
