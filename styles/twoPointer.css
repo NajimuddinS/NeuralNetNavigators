@@ -1,0 +1,136 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap');
+body {
+    background-color: #f7f9fc;
+    font-family: "Nunito Sans", sans-serif;
+    margin: 0;
+    padding: 20px;
+    color: #34495e;
+    line-height: 1.5;
+}
+
+h1 {
+    text-align: center;
+    font-size: 1.8em;
+    color: #0a7579;
+    margin-bottom: 20px;
+    animation: fadeIn 1s ease forwards; /* Animation for the main heading */
+}
+
+h2 {
+    font-size: 1.2em;
+    margin: 20px 0px 10px 50px;
+    color: #1167a0;
+    transform: translateX(-20px);
+    animation: slideInLeft 0.6s forwards; /* Animation for h2 elements */
+}
+
+.algorithm-description {
+    max-width: 800px;
+    margin: 0 auto;
+    background: #ffffff;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+p {
+    font-size: 0.9em;
+    margin: 10px 0px 0px 50px;
+    color: #2c3e50;
+    opacity: 0; /* Initially hidden for animation */
+    transform: translateX(20px);
+    animation: slideInRight 0.6s forwards; /* Animation for paragraph elements */
+}
+
+ul {
+    list-style-type: none;   /* Remove bullets */
+    padding: 0;
+}
+
+li {
+    font-size: 0.9em;
+    margin: 8px 0px 0px 50px;
+    color: #4e504f;
+    opacity: 0;
+    transform: translateX(20px);
+    animation: slideInRight 0.6s forwards;
+    animation-delay: 0.1s;
+}
+
+.highlight {
+    color: #6d2413; /* You can change this color to your desired one */
+    font-weight: bold; /* Optional: make the text bold */
+}
+
+
+
+/* Fade-in animation for main heading */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+
+/* Slide-in animation for headings */
+@keyframes slideInLeft {
+    from {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+
+/* Slide-in animation for text */
+@keyframes slideInRight {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+
+
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2em; /* Adjust font size for smaller screens */
+    }
+
+    h2 {
+        font-size: 1.3em; /* Adjust font size for h2 elements */
+    }
+
+    .algorithm-description {
+        padding: 15px; /* Adjust padding for smaller screens */
+    }
+
+    p {
+        font-size: 0.8em; /* Adjust font size for paragraphs */
+    }
+
+    li {
+        font-size: 0.8em; /* Adjust font size for list items */
+    }
+}
+
+/* Adding more colors for headings */
+h2:nth-child(even) {
+    color: #8e44ad; /* Purple for even headings */
+}
+
+h2:nth-child(odd) {
+    color: #41096c; /* Orange for odd headings */
+}

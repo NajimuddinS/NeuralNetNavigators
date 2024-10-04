@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../styles/twoPointer.css">
+    <title>AlgoView</title>
+</head>
+<body>
+    <h1>Two Pointer Approach Visualizer</h1>
+    <div id="array-container">
+        <!-- Array elements will be dynamically added here -->
+    </div>
+
+    <div class="overview-container">
+        <div class="algorithm-description slide-in-left">
+            <h2>Two Pointer Approach Overview</h2>
+            <p>The two-pointer approach is a simple yet effective algorithm technique used to solve problems involving arrays or lists. 
+                It involves using two pointers to traverse the data structure from different directions. But it requires the data to be sorted.
+                This method helps in optimizing solutions by reducing time complexity, especially for problems like finding pairs or merging sorted arrays.</p>
+            
+            <h2>How Two Pointer Approach Works?</h2>
+            <ul>
+                <li><span class="highlight">Initialize Pointers:</span> Set two pointers at the desired starting positions, usually at the beginning and end of the array.</li>
+                <li><span class="highlight">Move Pointers:</span> Adjust the pointers based on the requirements, such as moving pointers forward and backward.</li>
+                <li><span class="highlight">Check Condition:</span> Two pointers move towards each other until they cross, evaluating conditions to find solutions.</li>
+                <li><span class="highlight">Update Pointers:</span> Modify the positions of the pointers based on the result of the condition check.</li>
+            </ul>
+            
+            <h2>Advantages of Using Two Pointer</h2>
+            <ul>
+                <li><span class="highlight">Optimized Performance:</span> Significantly reduces time complexity compared to brute-force methods.</li>
+                <li><span class="highlight">Simple Implementation:</span> Straightforward to code and debug.</li>
+                <li><span class="highlight">Memory Efficient:</span> Typically requires constant space, making it space efficient.</li>
+            </ul>
+            
+            <h2>Disadvantage of Using Two Pointer</h2>
+            <ul>
+                <li><span class="highlight">Sorted Data Requirement:</span> Often requires the data to be sorted, which may involve additional preprocessing.</li>
+            </ul>
+            
+            <h2>Two Pointer Variations</h2>
+            <ul>
+                <li><span class="highlight">Fixed Distance Pointers:</span> Pointers move in a fixed pattern relative to each other.</li>
+                <li><span class="highlight">Opposite Direction Pointers:</span> Pointers start at opposite ends and move towards each other.</li>
+                <li><span class="highlight">Same Direction Pointers:</span> Pointers move in the same direction but at different speeds or steps.</li>
+            </ul>
+            
+            <h2>Real-World Examples of Two Pointer</h2>
+            <ul>
+                <li><span class="highlight">Array Pair Sum:</span> Finding pairs of numbers in an array that add up to a specific sum.</li>
+                <li><span class="highlight">Detecting cycle in a Linked List:</span> Identify cycles in a linked list using two pointers.</li>
+                <li><span class="highlight">Checking Palindrome:</span> Verify if sequences read the same backward and forward.</li>
+                <li><span class="highlight">Two-Sum Problem:</span> Solving the classic two-sum problem efficiently.</li>
+                <li><span class="highlight">Finding the Middle of a Linked List:</span> Locate the central node using slow and fast pointers.</li>
+            </ul>
+        </div>
+    </div>
+
+    <script src="../src/twoPointer.js"></script>
+</body>
+</html>
