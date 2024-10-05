@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>Binary Search Visualizer</title>
+  <link rel="stylesheet" href="../styles/style.css">
+   <link rel="stylesheet" href="../styles/bs.min.css">
+</head>
+<style>
+    .card-footer{
+      padding-top:15px ;
+      border-radius: 15px;
+    }
+    .row1{
+      margin: auto;
+    }
+    .bs {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: stretch;
+    width: 100%;
+    margin-bottom: 20px;
+    padding-top: 10px;
+    }
+    .input-group-append{
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      margin: auto;
+    }
+    .fbtns{
+      display: flex;
+    }
+
+    .computerContainer1 {
+    width: 1000px;
+    height: 1200px;
+    display: flex;
+    flex-direction: column;
+    background-color: #b9ab84;
+    border-radius: 24px 24px;
+    }
+    
+    .container {
+        text-align: center;
+        width: 80%;
+        max-width: 600px;
+        background: white;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+    }
+
+    .histogram {
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+        align-items: flex-end;
+        margin: 20px 0;
+        position: relative;
+        padding-bottom: 10px;
+        flex-wrap: wrap;
+    }
+
+    .bar {
+        background-color: #15ff00;
+        border-radius: 5px;
+        display: flex;
+        justify-content: center;
+        align-items: flex-end;
+        color: rgb(0, 0, 0);
+        font-weight:800;
+        font-size: large;
+        font-family: 'Courier New', Courier, monospace;
+        transition: background-color 0.3s ease;
+    }
+
+    .bar.left {
+        background-color: #3498db;
+    }
+
+    .bar.right {
+        background-color: #e74c3c;
+    }
+
+    .bar.mid {
+        background-color: #f1c40f;
+    }
+
+    #message {
+        margin-top: 20px;
+        font-size: 18px;
+        font-family: 'Courier New', Courier, monospace;
+        font-weight: 800;
+        color: #51ff00;
+    }
+
+    .outputContainerBS {
+    margin: 0 10px;
+    color: #15ff00;
+    font-weight: 800;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: large;
+    }
+
+
+</style>
+<body>
+  <div class="root">
+    <main class="computerContainer1">
+      <section class="screenContainer">
+        <div class="screenFrame">
+          <div class="screen">
+            <div class="terminal">
+              <div class="outputContainerBS">
+                Note : Separate Input elements by Commas [0,1]
+                <div id="message"></div>
+              </div>
+
+              <div class="histogram" id="histogram"></div>
+              
+             
+          </div>
+        </div>
+      </section>
+      <div class="card-footer">
+        <div class="input-group bs">
+          <div class="input-group-append">
+            <input type="text" id="arrayInput" class="form-control" placeholder="Input" required>
+            <input type="text" id="targetInput" class="form-control" placeholder="Target" required>
+              <button type="button" class="btn button" onclick="startVisualization()">
+                <div class="button-top-push">Visualize</div>
+                <div class="button-bottom-push"></div>
+                <div class="button-base-push"></div>
+              </button>
+
+          </div>
+      </div>
+      <section class="bodyDecor">
+        <div class="floppyDriveContainer">
+          <div class="floppyDrive">
+            <div class="floppyShade"></div>
+            <div class="floppyShadeDarker"></div>
+            <div class="floppySlot"></div>
+          </div>
+        </div>
+        <div class="logoContainer">
+          <div class="logo"></div>
+        </div>
+      </section>
+      <section class="bottomDecor">
+        <div class="bottomButton"></div>
+      </section>
+    </main>
+  </div>
+  <div style="height: 100px;">
+
+  </div>
+</body>
+  <script>
+        function startVisualization() {
+            const arrayInput = document.getElementById("arrayInput").value.trim();
+            const targetInput = document.getElementById("targetInput").value.trim();
+
+            // Validate the input
+            if (!arrayInput || !targetInput) {
+                document.getElementById('message').textContent = 'Please enter a valid array and target value.';
+                return;
+            }
+
+            const target = parseInt(targetInput);
+
+            // Parse and sort the input array
+            const array = arrayInput.split(',').map(Number).sort((a, b) => a - b);
+
+            // Clear previous visualization
+            document.getElementById('message').innerHTML = '';
+            displayHistogram(array);
+
+            binarySearchHistogramVisualizer(array, target);
+        }
+
+        function displayHistogram(array, left = -1, mid = -1, right = -1) {
+            const histogram = document.getElementById("histogram");
+            histogram.innerHTML = ''; // Clear existing bars
+
+            const barWidth = Math.min(50, Math.max(30, 800 / array.length - 10)); // Dynamically calculate bar width
+
+            array.forEach((num, index) => {
+                const bar = document.createElement('div');
+                bar.classList.add('bar');
+                bar.style.height = `${Math.max(num * 5, 30)}px`; // Ensure a minimum height of 30px
+                bar.textContent = num;
+                bar.style.width = `${barWidth}px`; // Dynamically set bar width
+
+                if (index === mid) {
+                    bar.classList.add('mid');
+                } else if (index === left) {
+                    bar.classList.add('left');
+                } else if (index === right) {
+                    bar.classList.add('right');
+                }
+
+                histogram.appendChild(bar);
+            });
+        }
+
+        function binarySearchHistogramVisualizer(array, target) {
+            let left = 0;
+            let right = array.length - 1;
+            let step = 0;
+
+            function visualizeStep() {
+                if (left <= right) {
+                    const mid = Math.floor((left + right) / 2);
+                    displayHistogram(array, left, mid, right);
+
+                    if (array[mid] === target) {
+                        document.getElementById('message').textContent = `Target ${target} found at index ${mid}`;
+                        return;
+                    } else if (array[mid] < target) {
+                        left = mid + 1;
+                    } else {
+                        right = mid - 1;
+                    }
+
+                    step++;
+                    setTimeout(visualizeStep, 1000); // 1-second delay for each step
+                } else {
+                    document.getElementById('message').textContent = `Target ${target} not found in the array.`;
+                }
+            }
+
+            visualizeStep();
+        }
+  </script>
+</html>
