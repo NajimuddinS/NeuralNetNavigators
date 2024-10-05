@@ -3,36 +3,72 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bubble_sort</title>
-    <link rel="styleSheet" href="./styles/bubble.css">
-    
+    <title>selection</title>
+    <link rel="stylesheet" href="../styles/style.css">
+   <link rel="stylesheet" href="../styles/bs.min.css">
+   <link rel="stylesheet" href="../styles/selection.css">
+   
 </head>
 <body>
-    <div id="container">
-        <ul id="array_items"></ul>
-
-        <form>
-            <input type="text" id="inputNumber" placeholder="Enter comma-separated values">
-            <input type="submit" value="Push">
-        </form>
-
-        <button id="sortBtn" onclick="sortItems()">Sort</button>
-    </div>
     
-    <script src="./src/bubble.js">
-        for (let i = 0; i < array.length; i++) {
-        let min_idx = i;
-        for (let j = i + 1; j < array.length; j++) {
-            for (let k = i; k < sso_bars.length; k++) {
-                if (k !== j && k !== min_idx && k < l) {
-                    sso_bars[k].style.backgroundColor = "brown";
-                }
-            }
-            if (array[min_idx] > array[j]) {
-                min_idx = j;
-            }
-        }
-    }
-    </script>
+    <main style="width: 70%;height: 60%;" class="computerContainer">
+        <section class="screenContainer">
+          <div class="screenFrame">
+            <div class="screen">
+              <div class="terminal">
+                <div class="outputContainer">
+                  <!-- Screen -->
+                </div>
+                
+                <div id="queueContainer" class="queue-container"></div>
+                <div id="msgbox" class="msgbox"><h5 style="color: rgb(105, 128, 0);">Selection sort:</h5s>
+                    <!-- list of numbers -->
+                    <ul id="array_items"></ul>
+                    
+                </div>
+               
+            </div>
+          </div>
+        </section>
+        <div class="card-footer">
+          <div class="input-group">
+  
+           
+            <div class="input-group-append">
+         <!-- input from -->
+              <form>
+                <input type="text" id="inputNumber" class="form-control" placeholder="Enter comma-separated values" required>
+                <input type="submit" value="Push">
+            </form>
+
+        <!-- sort button -->
+                <button style="margin-left: 40%;" type="button" class="btn button" id="sortBtn" onclick="sortItems()">
+                    
+                  <div class="button-top-push" >Sort</div>
+                  <div class="button-bottom-push"></div>
+                  <div class="button-base-push"></div>
+                </button>
+                <span style="width: 10px;"> </span>
+                
+            </div>
+         
+        </div>
+        <section class="bodyDecor">
+          <div class="floppyDriveContainer">
+            <div class="floppyDrive">
+              <div class="floppyShade"></div>
+              <div class="floppyShadeDarker"></div>
+              <div class="floppySlot"></div>
+            </div>
+          </div>
+          <div class="logoContainer">
+            <div class="logo"></div>
+          </div>
+        </section>
+        <section class="bottomDecor">
+          <div class="bottomButton"></div>
+        </section>
+      </main>
+      <script src="../src/selection.js"></script>
 </body>
 </html>
