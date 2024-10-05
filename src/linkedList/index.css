@@ -1,0 +1,40 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    }
+    
+    .header {
+    font-size: 35px;
+    text-align: center;
+    }
+    #linkedListContainer{
+        width: 100%;
+        overflow-y: auto;
+        overflow-x: hidden;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .nodeBody{
+        width: 100px;
+    border: 1px solid;
+    height: 41px;
+    display: flex;
+    }
+    .data{
+    width: 80px;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #ffe200;
+    }
+    .next{
+        width: 18px;
+        height: 100%;
+        background: #a9a9a9;
+    }
+    .arrow{
+        margin: 0 10px ;
+    }
