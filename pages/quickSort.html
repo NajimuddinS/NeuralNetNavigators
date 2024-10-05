@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../styles/quickSort.css">
+    <title>QuickSort Visualization</title>
+</head>
+<body>
+    <div id="container">
+    <h1>QuickSort Visualization</h1>
+    <div id="input-container">
+        <input type="text" id="arrayInput" placeholder="Enter array elements separated by commas">
+        <button id="start-button" onclick="startQuickSort()">Sort Array</button>
+    </div>
+
+    <div class="array-container" id="array-container">
+
+    </div>
+    
+    <div id="info-container">
+        <h2>Quick Sort Overview</h2>
+        <div class="info">
+            <h3>Time Complexity</h3>
+            <p>The time complexity of Quick Sort is O(n log n) on average, but O(n^2) in the worst case.</p>
+        </div>
+        <div class="info">
+            <h3>Space Complexity</h3>
+            <p>The space complexity of Quick Sort is O(log n) due to the recursive stack space.</p>
+        </div>
+        <div class="info">
+            <h3>Applications</h3>
+            <p>Quick Sort is used in various applications like:</p>
+            <ul>
+                <li>Efficiently sorting large datasets.</li>
+                <li>Used in various libraries and frameworks as the default sort algorithm.</li>
+            </ul>
+        </div>
+        <div class="info">
+            <h3>Advantages</h3>
+            <p>Quick Sort is in-place and doesn't require additional space like Merge Sort.</p>
+        </div>
+        <div class="info">
+            <h3>Disadvantages</h3>
+            <p>Quick Sort has a worst-case time complexity of O(n^2) which can be avoided with good pivot selection strategies.</p>
+        </div>
+    </div>
+
+</div>
+    <script src="../src/quickSort.js"></script>
+</body>
+</html>

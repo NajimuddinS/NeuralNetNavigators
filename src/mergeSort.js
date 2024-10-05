@@ -22,7 +22,7 @@ function mergeSort(arr, start, end, container) {
 
     let mid = Math.floor((start + end) / 2);
     
-    // Create left and right containers for subarrays
+    // Creating left and right containers for subarrays
     let leftContainer = document.createElement('div');
     leftContainer.className = 'tree';
     container.appendChild(leftContainer);
@@ -33,13 +33,13 @@ function mergeSort(arr, start, end, container) {
     container.appendChild(rightContainer);
     let right = mergeSort(arr, mid + 1, end, rightContainer);
 
-    // Add an arrow between the nodes
+    // Adding an arrow between the nodes
     let arrow = document.createElement('div');
     arrow.className = 'arrow';
     arrow.textContent = '↓';
     container.appendChild(arrow);
 
-    // Create a new node for the merged array
+    // Creating a new node for the merged array
     let mergedContainer = document.createElement('div');
     mergedContainer.className = 'node';
     mergedContainer.textContent = `[${left.join(', ')}] + [${right.join(', ')}] = [${merge(left, right).join(', ')}]`;

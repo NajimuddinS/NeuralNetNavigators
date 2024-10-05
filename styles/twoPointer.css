@@ -1,4 +1,6 @@
+/* Improting font from Google fonts */
 @import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap');
+
 body {
     background-color: #f7f9fc;
     font-family: "Nunito Sans", sans-serif;
@@ -43,7 +45,7 @@ p {
 }
 
 ul {
-    list-style-type: none;   /* Remove bullets */
+    list-style-type: none;
     padding: 0;
 }
 
@@ -58,8 +60,8 @@ li {
 }
 
 .highlight {
-    color: #6d2413; /* You can change this color to your desired one */
-    font-weight: bold; /* Optional: make the text bold */
+    color: #6d2413;
+    font-weight: bold;
 }
 
 .overview-container{
@@ -106,37 +108,37 @@ li {
 
 
 
-
 /* Responsive Design */
 @media (max-width: 768px) {
     h1 {
-        font-size: 2em; /* Adjust font size for smaller screens */
+        font-size: 2em;
     }
 
     h2 {
-        font-size: 1.3em; /* Adjust font size for h2 elements */
+        font-size: 1.3em;
     }
 
     .algorithm-description {
-        padding: 15px; /* Adjust padding for smaller screens */
+        padding: 15px;
     }
 
     p {
-        font-size: 0.8em; /* Adjust font size for paragraphs */
+        font-size: 0.8em;
     }
 
     li {
-        font-size: 0.8em; /* Adjust font size for list items */
+        font-size: 0.8em;
     }
 }
 
+
 /* Adding more colors for headings */
 h2:nth-child(even) {
-    color: #8e44ad; /* Purple for even headings */
+    color: #8e44ad;
 }
 
 h2:nth-child(odd) {
-    color: #41096c; /* Orange for odd headings */
+    color: #41096c;
 }
 
 
