@@ -7,6 +7,43 @@
     <title>AlgoView</title>
 </head>
 <body>
+    <div id="container">
+        <h1>Merge Sort Visualizer</h1>
+        <div id="input-container">
+            <input type="text" id="array-input" placeholder="Enter array elements (comma separated)">
+            <button id="start-button">Start Merge Sort</button>
+        </div>
+        <div id="tree-container"></div>
+
+        <div id="info-container">
+            <h2>Merge Sort Overview</h2>
+            <div class="info">
+                <h3>Time Complexity</h3>
+                <p>The time complexity of Merge Sort is O(n log n) in all cases (worst, average, and best).</p>
+            </div>
+            <div class="info">
+                <h3>Space Complexity</h3>
+                <p>The space complexity of Merge Sort is O(n) due to the temporary arrays used for merging.</p>
+            </div>
+            <div class="info">
+                <h3>Applications</h3>
+                <p>Merge Sort is used in various applications like:</p>
+                <ul>
+                    <li>Sorting linked lists.</li>
+                    <li>External sorting algorithms.</li>
+                    <li>Sorting large datasets that do not fit into memory.</li>
+                </ul>
+            </div>
+            <div class="info">
+                <h3>Advantages</h3>
+                <p>Merge Sort is stable and performs well on large data sets. It also divides the array into halves, making it easier to sort.</p>
+            </div>
+            <div class="info">
+                <h3>Disadvantages</h3>
+                <p>Merge Sort requires additional space proportional to the size of the array, and it can be slower than other algorithms like Quick Sort for smaller arrays.</p>
+            </div>
+        </div>
+    </div>
     <script src="../src/mergeSort.js"></script>
 </body>
 </html>
