@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>Selection Sort Visualizer</title>
+  <link rel="stylesheet" href="../styles/style.css">
+   <link rel="stylesheet" href="../styles/bs.min.css">
+</head>
+<style>
+    .card-footer{
+      padding-top:15px ;
+      border-radius: 15px;
+    }
+    .row1{
+      margin: auto;
+    }
+
+    .input-group-append{
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      margin: auto;
+    }
+    .fbtns{
+      display: flex;
+    }
+
+    
+.container {
+    text-align: center;
+    width: 80%;
+    max-width: 600px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+}
+
+.selection-container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    height: 200px;
+    margin: 20px 0;
+    position: relative;
+}
+
+.queue-item {
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: 800;
+    width: 50px;
+    height: 50px;
+    background: #48ff00;
+    border-radius: 15px;
+    margin: 0 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: rgb(0, 0, 0);
+    font-size: 24px;
+    transition: transform 0.5s, opacity 0.5s;
+    opacity: 1;
+}
+
+.queue-item.slide-in {
+    transform: translateX(100%);
+    opacity: 0;
+}
+
+.queue-item.slide-out {
+    transform: translateX(-100%);
+    opacity: 0;
+}
+
+/* Add this to your existing CSS */
+.queue-item.swapping {
+    background-color: #ffcc00; /* Change to a noticeable color during swap */
+    transform: scale(1.2); /* Slight enlargement during swap */
+    transition: background-color 0.5s ease, transform 0.5s ease;
+}
+
+
+.msgbox {
+    font-weight: 700;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: large;
+    text-align: center;
+    margin: auto;
+    color: rgb(51, 255, 0);
+    padding: 10px;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
+.button-container button {
+    margin: 5px;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+}
+
+.button-container button:hover {
+    background-color: #0056b3;
+}
+
+/* Styling for the message box */
+.msgbox {
+    display: none; /* Initially hidden */
+    font-weight: 700;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: large;
+    text-align: center;
+    margin: auto;
+    color: #28a745; /* Success green */
+    padding: 10px;
+    border-radius: 5px;
+    margin-top: 10px;
+    background-color: rgba(40, 167, 69, 0.1); /* Light green background */
+}
+
+.msgbox.show {
+    display: block; /* Show the message when sorting is done */
+}
+
+
+.keyboard {
+    padding: 20px;
+    display: grid;
+    grid-template-rows: auto;
+    flex-direction: column;
+    justify-items: center;
+    align-items: center;
+    background-color: #CFC19A;
+    border-radius: 25px;
+    border: 5px solid #B9AB84;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.8), inset 0 5px 10px rgba(255, 255, 255, 0.1);
+    /* width: 350px; */
+    }
+
+    .key {
+      appearance: none;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      -ms-appearance: none;
+      -khtml-appearance: none;
+      box-sizing: initial;
+      border: none;
+      cursor: pointer;
+      -webkit-touch-callout: none;
+      -webkit-user-select: none;
+      -khtml-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+      margin: 20px 5px;
+      position: relative;
+      width: 250px;
+      height: 19px;
+      padding: 31px 17px;
+      border-radius: 10px;
+      overflow: hidden;
+      /* TEXT */
+      text-align: center;
+      font: bold 20px arial, sans-serif;
+      color: #968f84;
+      transition: box-shadow 0.02s cubic-bezier(0.79, 0.03, 0.43, 1);
+      box-shadow: inset 0px 0px 0px 0px #44413c, 0px 0px 0px 1.5px #44413c,
+        0px 16px 12px 0px #504d471f;
+        z-index: 3;
+    }
+    .key:active {
+      transition: box-shadow 0.1s cubic-bezier(0, 0, 0, 1);
+      /* width: 250px; */
+      box-shadow: inset 0px 0px 6px 0px #44413c, 0px 0px 0px 1.5px #44413c,
+        0px 10px 12px 0px #504d471f;
+    }
+    .key:active::before {
+      background: linear-gradient(0deg, #dddad3, #b6b0a2);
+      transition: transform 0.1s cubic-bezier(0, 0, 0, 1),
+        background 0.1s cubic-bezier(0, 0, 0, 1);
+    }
+    .key::before {
+      left: 10px;
+      top: 12px;
+      border-radius: 7px;
+      box-shadow: 0px -1px 0px 0px #dedcdc, 0px 2px 0px 0px #9a948c;
+      content: "";
+      position: absolute;
+      z-index: -1;
+      width: 265px;
+      height: 60px;
+      transition: transform 0.01s cubic-bezier(0.79, 0.03, 0.43, 1),
+        background 0.02s cubic-bezier(0.79, 0.03, 0.43, 1);
+      background: linear-gradient(0deg, #e3e0d9, #c4bfb4);
+    }
+    .key::after {
+      width: 285px;
+      left: 0;
+      top: 0;
+      z-index: -2;
+      position: absolute;
+      content: "";
+      filter: blur(1px);
+      border-top: 40px solid #e9e6e0;
+      border-bottom: 42px solid #999286;
+      border-left: 40px solid #cdc8be;
+      border-right: 40px solid #cdc8be;
+    }
+
+    .info{
+      margin-top: 25px;
+      background: #CFC19A; 
+      width: 900px;
+      height: 500px;
+      border-radius: 20px;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.8), inset 0 5px 10px rgba(255, 255, 255, 0.1);
+    }
+
+
+    .cards_item {
+      display: flex;
+      padding: 1rem;
+    }
+
+    .card_image {
+      height: calc(13*1.2rem);
+      padding: 1.2rem 1.2rem 0;
+      position:relative;
+    }
+    .card_image:before,
+    .card_image:after{
+      content: "";
+      position: absolute;
+      width: 20px;
+      left: 60%;
+      top: 0;
+      height: 45px;
+      background: #e6e6e6b8;
+      transform: rotate(45deg);
+    }
+    .card_image:after{
+      transform: rotate(-45deg);
+      top:auto;
+      bottom:-22px;
+      left:40%;
+    }
+    .card_image img {
+      width:100%;
+      height:100%;
+      object-fit:cover;
+    }
+
+    .cards_item {
+      filter:drop-shadow(0 0 5px rgba(0, 0, 0, 0.25));
+    }
+
+    .card {
+      background-color: white;
+      border-radius: 0.25rem;
+      display: flex;
+      height: 460px;
+      flex-direction: column;
+      overflow: hidden;
+      padding-left: 30px;
+      background: repeating-linear-gradient(#0000 0 calc(1.2rem - 1px),#66afe1 0 1.2rem) right bottom /100% 100%,linear-gradient(red 0 0) 30px 0/2px 100% #fff;
+      background-repeat: no-repeat;
+      line-height: 1.2rem;
+      -webkit-mask:radial-gradient(circle .8rem at 2px 50%,#0000 98%,#000)0 0/100% 2.4rem;
+    }
+
+    .card_content {
+      padding: 0.9rem;
+    }
+
+    h2.card_title,p {
+      margin: 1.2rem 0;
+    }
+    h2.card_title {
+        font-size: 1.3em;
+        font-family: 'Sofia Sans', sans-serif;
+        font-weight: bolder;
+    }
+    .P_container{
+      display: flex;
+      flex-direction: column;
+      /* gap:25px; */
+    }
+</style>
+<body>
+  <div class="root">
+    <div class="keyboard">
+        <a style="text-decoration: none;" href="./Bubble.html"><div class="key">Bubble Sort</div></a>
+        <a style="text-decoration: none;" href="./selection.html"><div class="key">Selection Sort</div></a>
+        <a style="text-decoration: none;" href="./insertionsort.html"><div class="key">Insertion Sort</div></a>
+        <a style="text-decoration: none;" href="./mergeSort.html"><div class="key">Merge Sort</div></a>
+        <div class="key">Quick Sort</div>
+        <a style="text-decoration: none;" href="./heap.html"><div class="key">Heap</div></a>
+        <a style="text-decoration: none;" href="./stack.html"><div class="key">Stack</div></a>
+        <a style="text-decoration: none;" href="./queue.html"><div class="key">Queue</div></a>
+        <div class="key">Sliding Window</div>
+        <a style="text-decoration: none;" href="./binarysearch.html"><div class="key">Binary Search</div></a>
+        <div class="key">Two Pointers</div>
+        <div class="key">Linked List</div>
+  </div>
+  <div class="P_container">
+    <main class="computerContainer">
+      <section class="screenContainer">
+        <div class="screenFrame">
+          <div class="screen">
+            <div class="terminal">
+              <div class="outputContainer">
+                <!-- Screen -->
+              </div>
+
+              <div id="selectionContainer" class="selection-container"></div>
+              <div id="messageBox" class="msgbox"></div>
+             
+          </div>
+        </div>
+      </section>
+      <div class="card-footer">
+        <div class="input-group">
+
+          <div class="input-group-append">
+            <input type="text" id="inputValue" class="form-control" placeholder="Enter" required>
+              <button type="submit" class="btn button" onclick="addItems()">
+                <div class="button-top-push">Enter</div>
+                <div class="button-bottom-push"></div>
+                <div class="button-base-push"></div>
+              </button>
+              <span style="width: 10px;"> </span>
+              <button type="button" id="sortBtn" class="btn button" onclick="sortItems()">
+                <div class="button-top-empty">Sort</div>
+                <div class="button-bottom-empty"></div>
+                <div class="button-base-empty"></div>
+              </button>
+              <span style="width: 10px;"> </span>
+              <button type="button" id="clearBtn" class="btn button" onclick="clearItems()">
+                <div class="button-top">Clear</div>
+                <div class="button-bottom"></div>
+                <div class="button-base"></div>
+              </button>
+              
+          </div>
+        <div style="display: flex;align-items: center;margin: auto;padding: 20px 0 20px 0;gap: 20px;">
+        </div>
+
+      </div>
+      <section class="bodyDecor">
+        <div class="floppyDriveContainer">
+          <div class="floppyDrive">
+            <div class="floppyShade"></div>
+            <div class="floppyShadeDarker"></div>
+            <div class="floppySlot"></div>
+          </div>
+        </div>
+        <div class="logoContainer">
+          <div class="logo"></div>
+        </div>
+      </section>
+      <section class="bottomDecor">
+        <div class="bottomButton"></div>
+      </section>
+    </main>
+  
+    <div class="info">
+      <li class="cards_item">
+        <div class="card">
+          <div class="card_content">
+            <h2 class="card_title">Selection Sort</h2>
+            <div style="font-family: 'Sofia Sans', sans-serif;" class="card_text">
+              <p>Selection Sort is a comparison-based sorting algorithm that divides the input list into two parts: the sorted and the unsorted portion. It repeatedly selects the smallest (or largest, depending on sorting order) element from the unsorted portion and swaps it with the first unsorted element, expanding the sorted portion one element at a time.</p>
+              <p style="font-weight: bold;">Time Complexity:</p>
+              <p>Best Case: O(n²) (regardless of the initial order of elements)</p>
+              <p>Average Case: O(n²)</p>
+              <p>Worst Case: O(n²)</p>
+              <p style="font-weight: bold;">Space Complexity:</p>
+              <p>O(1) (in-place sorting; requires a constant amount of additional memory)</p>
+              <p>Selection Sort is not efficient for large datasets but has the advantage of being simple to understand and implement.</p>
+            </div>
+          </div>
+        </div>
+      </li>
+    </div>
+  </div>
+  </div>
+  <div style="height: 100px;">
+  </div>
+  
+
+
+</body>
+  <script>
+    let array = [];
+    let isSorting = false;
+
+    // Function to add input values to the array
+    function addItems() {
+      if (isSorting) {
+        return;
+      }
+
+      let inputValue = document.getElementById('inputValue').value;
+      if (inputValue) {
+        // Split input by comma, convert to numbers, and concatenate to the array
+        let newArray = inputValue.split(',').map(Number);
+        array = array.concat(newArray);
+
+        // Display the updated array
+        displayItems(array);
+      } else {
+        console.log("Input is empty");
+      }
+
+      // Clear the input field
+      document.getElementById('inputValue').value = "";
+    }
+
+    // Clear the array
+    function clearItems() {
+      array = []; 
+      let selectionContainer = document.getElementById("selectionContainer");
+      selectionContainer.innerHTML = ""; // Clear the visualized array
+      document.getElementById('messageBox').textContent = "";
+      document.getElementById('messageBox').classList.remove('show');
+    }
+
+    // Function to display the array in the selection visualizer
+    function displayItems(array) {
+      let selectionContainer = document.getElementById("selectionContainer");
+      selectionContainer.innerHTML = "";  // Clear current display
+
+      array.forEach(item => {
+        let div = document.createElement("div");
+        div.classList.add("queue-item");
+        div.textContent = item;
+        selectionContainer.appendChild(div);
+      });
+    }
+
+    // Sorting algorithm (Selection Sort) with visual feedback
+    async function sortItems() {
+      if (isSorting) return;
+      isSorting = true;
+
+      let sortBtn = document.getElementById("sortBtn");
+      sortBtn.disabled = true;
+
+      let items = document.querySelectorAll(".queue-item");
+
+      let messageBox = document.getElementById('messageBox');
+      messageBox.textContent = "";
+      messageBox.classList.remove('show');
+
+      for (let i = 0; i < array.length - 1; i++) {
+        let minIndex = i;
+        items[i].style.backgroundColor = "#ffcc00"; // Highlight current item
+
+        for (let j = i + 1; j < array.length; j++) {
+          items[j].style.backgroundColor = "#ff6b6b"; // Highlight item being compared
+
+          await new Promise(resolve => setTimeout(resolve, 500)); // Delay for visualization
+
+          if (array[j] < array[minIndex]) {
+            if (minIndex !== i) {
+              items[minIndex].style.backgroundColor = "#48ff00"; // Reset previous min
+            }
+            minIndex = j;
+            items[minIndex].style.backgroundColor = "#ff00ff"; // Highlight new min
+          } else {
+            items[j].style.backgroundColor = "#48ff00"; // Reset if not min
+          }
+        }
+
+        if (minIndex !== i) {
+          await swap(items, i, minIndex);
+          [array[i], array[minIndex]] = [array[minIndex], array[i]]; // Swap in array
+        }
+
+        items[i].style.backgroundColor = "#48ff00"; // Reset color after swap
+      }
+
+      items[array.length - 1].style.backgroundColor = "#48ff00"; // Color the last item
+
+      // Display success message after sorting
+      messageBox.textContent = "Array sorted successfully";
+      messageBox.classList.add('show'); // Show the message
+
+      sortBtn.disabled = false;
+      isSorting = false;
+    }
+
+    // Function to swap two items visually and in the array
+    function swap(items, index1, index2) {
+      return new Promise(resolve => {
+        // Add swapping class to change color and scale
+        items[index1].classList.add("swapping");
+        items[index2].classList.add("swapping");
+
+        // Set delay to allow color and scale change before swapping content
+        setTimeout(() => {
+          // Swap the text content between the two items
+          let temp = items[index1].textContent;
+          items[index1].textContent = items[index2].textContent;
+          items[index2].textContent = temp;
+
+          // Remove swapping class after transition
+          setTimeout(() => {
+            items[index1].classList.remove("swapping");
+            items[index2].classList.remove("swapping");
+            resolve(); // Continue to the next swap
+          }, 500); // Duration for color change and scale down
+        }, 500); // Initial duration for color change and scale up
+      });
+    }
+  </script>
+</html>
+
+
