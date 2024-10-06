@@ -41,6 +41,7 @@ button:hover {
     grid-template-columns: repeat(10, 50px);
     grid-gap: 5px;
     justify-content: center;
+    margin-bottom: 20px;
 }
 
 .grid-item {
