@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../styles/sieve.css">
+    <title>Sieve of Eratosthenes Visualization</title>
+</head>
+<body>
+    <h1>Sieve of Eratosthenes Visualization</h1>
+    <h4>Click on Visualize button to see prime numbers from 1 to 100.</h4>
+    <div id="input-container">
+        <button onclick="startSieve()">Visualize</button>
+    </div>
+    <div id="grid-container">
+        <!-- grid data will be here -->
+    </div>
+    <div id="info-container">
+        <h2>What is the Sieve of Eratosthenes?</h2>
+        <p>
+            The Sieve of Eratosthenes is an ancient algorithm used to find all prime numbers up to a specified integer. It is one of the most efficient ways to find small prime numbers and is named after the Greek mathematician Eratosthenes.
+        </p>
+        <h3>How it Works:</h3>
+        <ul>
+            <li>List all numbers from 2 to the maximum number you want to check.</li>
+            <li>Start with the first number (2) and mark all its multiples as non-prime.</li>
+            <li>Move to the next unmarked number and mark all its multiples as non-prime.</li>
+            <li>Repeat the process until you have processed each number in the list.</li>
+            <li>The remaining unmarked numbers are prime.</li>
+        </ul>
+        <h3>Visualization:</h3>
+        <p>
+            Click the "Visualize" button to see the Sieve of Eratosthenes in action. The numbers will be displayed in a 10x10 grid, and the algorithm will highlight each number as it processes them. Prime numbers will be highlighted in green, non-prime numbers in red, and numbers currently being processed in yellow.
+        </p>
+    </div>
+    <script src="../src/sieve.js"></script>
+</body>
+</html>
