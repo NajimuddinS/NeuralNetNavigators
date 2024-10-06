@@ -2,7 +2,7 @@
 <html lang="en" >
 <head>
   <meta charset="UTF-8">
-  <title>Queue Visualizer</title>
+  <title>Insertion Sort Visualizer</title>
   <link rel="stylesheet" href="../styles/style.css">
    <link rel="stylesheet" href="../styles/bs.min.css">
 </head>
@@ -26,78 +26,56 @@
     }
 
     
-.container {
-    text-align: center;
-    width: 80%;
-    max-width: 600px;
-    background: white;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-}
+    .container {
+        text-align: center;
+        width: 80%;
+        max-width: 600px;
+        background: white;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+    }
 
-.queue-container {
-    display: flex;
-    justify-content: center;
-    align-items: flex-end;
-    height: 200px;
-    margin: 20px 0;
-    position: relative;
-}
-
-.queue-item {
-    font-family: 'Courier New', Courier, monospace;
-    font-weight: 800;
-    width: 50px;
-    height: 50px;
-    background: #48ff00;
-    margin: 0 5px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: rgb(0, 0, 0);
-    font-size: 24px;
-    border-radius: 5px;
-    transition: transform 0.5s, opacity 0.5s;
-    opacity: 1;
-}
-
-.queue-item.slide-in {
-    transform: translateX(100%);
-    opacity: 0;
-}
-
-.queue-item.slide-out {
-    transform: translateX(-100%);
-    opacity: 0;
-}
-
-.msgbox {
-    font-weight: 700;
-    font-family: 'Courier New', Courier, monospace;
-    font-size: large;
-    text-align: center;
-    margin: auto;
-    color: rgb(51, 255, 0);
-    padding: 10px;
-    border-radius: 5px;
-    margin-top: 10px;
-}
-
-.button-container button {
-    margin: 5px;
-    padding: 10px 15px;
-    border: none;
-    border-radius: 5px;
-    background-color: #007bff;
-    color: white;
-    cursor: pointer;
-}
-
-.button-container button:hover {
-    background-color: #0056b3;
-}
-
+    #array-container {
+            display: flex;
+            justify-content: center;
+            align-items: flex-end; 
+            height: 300px; 
+            margin: 20px;
+        }
+        .bar {
+            width: 50px; /* Increased width */
+            margin: 0 5px;
+            background-color: #007bff;
+            display: flex;
+            align-items: flex-end; 
+            justify-content: center;
+            transition: height 0.3s;
+            color: white;
+            font-weight: bold;
+        }
+        #controls {
+            margin: 20px;
+        }
+        button {
+            margin: 5px;
+            padding: 10px 20px;
+            border: none;
+            background-color: #28a745;
+            color: white;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+        #message {
+            margin-top: 20px;
+            font-size: 18px;
+            color: #28a745;
+            text-align: center;
+            font-family: 'Courier New', Courier, monospace;
+            font-weight: 800;
+        }
 .keyboard {
     padding: 20px;
     display: grid;
@@ -287,9 +265,9 @@
               <div class="outputContainer">
                 <!-- Screen -->
               </div>
+                <div id="array-container"></div>
+              <div id="message">Array is sorted!</div>
 
-              <div id="queueContainer" class="queue-container"></div>
-              <div id="msgbox" class="msgbox"></div>
              
           </div>
         </div>
@@ -298,39 +276,24 @@
         <div class="input-group">
 
           <div class="input-group-append">
-            <input type="text" id="inputValue" class="form-control" placeholder="Enter" required>
-              <button type="button" class="btn button" onclick="enqueue()">
-                <div class="button-top-push">Enqueue</div>
-                <div class="button-bottom-push"></div>
-                <div class="button-base-push"></div>
+            <input type="text" id="inputArray" class="form-control" placeholder="Enter" required>
+              <span style="width: 10px;"> </span>
+              <button type="button" id="sortBtn" class="btn button" onclick="visualizeSort()">
+                <div class="button-top-empty">Sort</div>
+                <div class="button-bottom-empty"></div>
+                <div class="button-base-empty"></div>
               </button>
               <span style="width: 10px;"> </span>
-              <button type="button" class="btn button" onclick="dequeue()">
-                <div class="button-top">Dequeue</div>
+              <button type="button" id="clearBtn" class="btn button" onclick="clearInput()">
+                <div class="button-top">Clear</div>
                 <div class="button-bottom"></div>
                 <div class="button-base"></div>
               </button>
+              
           </div>
         <div style="display: flex;align-items: center;margin: auto;padding: 20px 0 20px 0;gap: 20px;">
-          <button type="button" class="btn button" onclick="isEmpty()">
-            <div class="button-top-empty">Is Empty ?</div>
-            <div class="button-bottom-empty"></div>
-            <div class="button-base-empty"></div>
-          </button>
-
-          <button type="button" class="btn button" onclick="size()">
-            <div class="button-top">Size</div>
-            <div class="button-bottom"></div>
-            <div class="button-base"></div>
-          </button>
-
-          <button type="button" class="btn button" onclick="peek()">
-            <div class="button-top">Peak</div>
-            <div class="button-bottom"></div>
-            <div class="button-base"></div>
-          </button>
-
         </div>
+
       </div>
       <section class="bodyDecor">
         <div class="floppyDriveContainer">
@@ -348,139 +311,101 @@
         <div class="bottomButton"></div>
       </section>
     </main>
-    
+  
     <div class="info">
       <li class="cards_item">
         <div class="card">
           <div class="card_content">
-            <h2 class="card_title">Queue</h2>
+            <h2 class="card_title">Insertion Sort</h2>
             <div style="font-family: 'Sofia Sans', sans-serif;" class="card_text">
-              <p>A Queue is a linear data structure that follows the First In, First Out (FIFO) principle, meaning the first element added to the queue will be the first one to be removed. It is commonly used in scenarios where order of processing is important, such as scheduling tasks or handling requests.</p>
+              <p>Insertion Sort is a simple comparison-based sorting algorithm that builds the final sorted array one element at a time. It works by dividing the list into a sorted and an unsorted portion, and it repeatedly takes the first element from the unsorted portion and inserts it into the correct position in the sorted portion.</p>
               <p style="font-weight: bold;">Time Complexity:</p>
-              <p>Enqueue: O(1) (adding an element)</p>
-              <p>Dequeue: O(1) (removing an element)</p>
-              <p>Front/Peek: O(1) (accessing the front element)</p>
-              <p>isEmpty: O(1)</p>
+              <p>Best Case: O(n) (when the array is already sorted)</p>
+              <p>Average Case: O(n²) (due to nested loops for comparisons and shifts)</p>
+              <p>Worst Case: O(n²) (when the array is sorted in reverse order)</p>
               <p style="font-weight: bold;">Space Complexity:</p>
-              <p>O(n) (where n is the number of elements in the queue)</p>
-              <p>Queues can be implemented using arrays, linked lists, or circular buffers. They are widely used in various applications such as breadth-first search (BFS) in graphs, print job scheduling, and CPU task scheduling.</p>
+              <p>O(1) (in-place sorting; requires a constant amount of additional memory)</p>
+              <p>Insertion Sort is efficient for small datasets or nearly sorted data but becomes inefficient for larger lists compared to more advanced algorithms.</p>
             </div>
           </div>
         </div>
       </li>
     </div>
-
   </div>
   </div>
   <div style="height: 100px;">
-
   </div>
+  
+
+
 </body>
   <script>
-    class Queue {
-    constructor() {
-        this.items = [];
-    }
+        document.getElementById("inputArray").addEventListener("keypress", function(event) {
+            if (event.key === "Enter") {
+                visualizeSort();
+            }
+        });
 
-    enqueue(element) {
-        this.items.push(element);
-        this.addQueueItem(element);
-    }
+        function visualizeSort() {
+            const input = document.getElementById("inputArray").value;
+            const array = input.split(",").map(num => parseInt(num.trim())).filter(num => !isNaN(num));
+            const container = document.getElementById("array-container");
+            const message = document.getElementById("message");
+            container.innerHTML = ''; // Clear previous bars
+            message.textContent = ''; // Clear previous messages
+            array.forEach(num => {
+                const bar = document.createElement("div");
+                bar.className = "bar";
+                bar.style.height = `${num * 5}px`; // Adjust height for visibility
+                bar.textContent = num; // Display the number inside the bar
+                container.appendChild(bar);
+            });
 
-    dequeue() {
-        if (!this.isEmpty()) {
-            const removedElement = this.items.shift();
-            this.removeFirstItem();
-            return removedElement;
+            // Perform Insertion Sort Visualization
+            insertionSort(array);
         }
-        return null;
-    }
 
-    isEmpty() {
-        return this.items.length === 0;
-    }
+        function insertionSort(arr) {
+            const bars = document.querySelectorAll(".bar");
+            const message = document.getElementById("message");
+            let sorted = false; // Flag to track if sorting is complete
 
-    size() {
-        return this.items.length;
-    }
+            for (let i = 1; i < arr.length; i++) {
+                let key = arr[i];
+                let j = i - 1;
+                bars[i].style.backgroundColor = "orange"; // Highlight key element
+                setTimeout(() => {
+                    while (j >= 0 && arr[j] > key) {
+                        arr[j + 1] = arr[j];
+                        j--;
+                        updateBars(arr, bars);
+                    }
+                    arr[j + 1] = key;
+                    updateBars(arr, bars);
+                    bars[j + 1].style.backgroundColor = "green"; // Highlight sorted position
 
-    peek() {
-        if (!this.isEmpty()) {
-            return this.items[0];
+                    // Check if sorting is complete
+                    if (i === arr.length - 1) {
+                        sorted = true;
+                        message.textContent = "Sorting complete!";
+                    }
+                }, i * 1000); // Delay for visualization
+            }
         }
-        return null;
-    }
 
-    addQueueItem(element) {
-        const queueContainer = document.getElementById("queueContainer");
-        const div = document.createElement("div");
-        div.className = "queue-item slide-in";
-        div.innerText = element;
-        queueContainer.appendChild(div);
-
-        setTimeout(() => {
-            div.classList.remove('slide-in');
-        }, 100);
-    }
-
-    removeFirstItem() {
-        const queueContainer = document.getElementById("queueContainer");
-        const firstItem = queueContainer.firstChild;
-        if (firstItem) {
-            firstItem.classList.add('slide-out');
-            setTimeout(() => {
-                queueContainer.removeChild(firstItem);
-            }, 500); 
+        function updateBars(arr, bars) {
+            arr.forEach((num, index) => {
+                bars[index].style.height = `${num * 5}px`;
+                bars[index].textContent = num; // Update text content
+            });
         }
-    }
-}
 
-const queue = new Queue();
-
-function showFunctions() {
-    const buttons = document.querySelectorAll('.button-container button');
-    buttons.forEach(button => button.style.display = 'inline');
-}
-
-function enqueue() {
-    const input = document.getElementById("inputValue").value;
-    if (input) {
-        queue.enqueue(input);
-        showMessage(`Enqueued: ${input}`);
-        document.getElementById("inputValue").value = '';
-    }
-}
-
-function dequeue() {
-    const dequeuedValue = queue.dequeue();
-    if (dequeuedValue !== null) {
-        showMessage(`Dequeued: ${dequeuedValue}`);
-    } else {
-        showMessage("Queue is empty.");
-    }
-}
-
-function isEmpty() {
-    const message = queue.isEmpty() ? "Queue is empty." : "Queue is not empty.";
-    showMessage(message);
-}
-
-function size() {
-    showMessage(`Size of queue: ${queue.size()}`);
-}
-
-function peek() {
-    const peekedValue = queue.peek();
-    if (peekedValue !== null) {
-        showMessage(`Front of queue: ${peekedValue}`);
-    } else {
-        showMessage("Queue is empty.");
-    }
-}
-
-function showMessage(msg) {
-    const msgbox = document.getElementById("msgbox");
-    msgbox.innerText = msg;
-}
+        function clearInput() {
+            document.getElementById("inputArray").value = '';
+            document.getElementById("array-container").innerHTML = '';
+            document.getElementById("message").textContent = ''; // Clear message
+        }
   </script>
 </html>
+
+

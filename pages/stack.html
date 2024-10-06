@@ -12,12 +12,28 @@
 
 </head>
 <style>
+    .root-stack {
+    padding-top: 50px;
+    display: grid;
+    flex-direction: row;
+    grid-template-columns: 350px 1000px;
+    align-items: center;
+    gap:30px;
+    margin: auto;
+    justify-content: center;
+    }
 
-     .stack-container {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: column;
+    .P_container{
+      display: flex;
+      flex-direction: column;
+      /* gap:25px; */
+    }
+
+    .stack-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
     }
     .stack {
         display: flex;
@@ -63,22 +79,195 @@
       display: flex;
     }
 
+    .keyboard {
+    padding: 20px;
+    display: grid;
+    grid-template-rows: auto;
+    flex-direction: column;
+    justify-items: center;
+    align-items: center;
+    background-color: #CFC19A;
+    border-radius: 25px;
+    border: 5px solid #B9AB84;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.8), inset 0 5px 10px rgba(255, 255, 255, 0.1);
+    /* width: 350px; */
+    }
+
+    .key {
+      appearance: none;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      -ms-appearance: none;
+      -khtml-appearance: none;
+      box-sizing: initial;
+      border: none;
+      cursor: pointer;
+      -webkit-touch-callout: none;
+      -webkit-user-select: none;
+      -khtml-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+      margin: 20px 5px;
+      position: relative;
+      width: 250px;
+      height: 19px;
+      padding: 31px 17px;
+      border-radius: 10px;
+      overflow: hidden;
+      /* TEXT */
+      text-align: center;
+      font: bold 20px arial, sans-serif;
+      color: #968f84;
+      transition: box-shadow 0.02s cubic-bezier(0.79, 0.03, 0.43, 1);
+      box-shadow: inset 0px 0px 0px 0px #44413c, 0px 0px 0px 1.5px #44413c,
+        0px 16px 12px 0px #504d471f;
+        z-index: 3;
+    }
+    .key:active {
+      transition: box-shadow 0.1s cubic-bezier(0, 0, 0, 1);
+      /* width: 250px; */
+      box-shadow: inset 0px 0px 6px 0px #44413c, 0px 0px 0px 1.5px #44413c,
+        0px 10px 12px 0px #504d471f;
+    }
+    .key:active::before {
+      background: linear-gradient(0deg, #dddad3, #b6b0a2);
+      transition: transform 0.1s cubic-bezier(0, 0, 0, 1),
+        background 0.1s cubic-bezier(0, 0, 0, 1);
+    }
+    .key::before {
+      left: 10px;
+      top: 12px;
+      border-radius: 7px;
+      box-shadow: 0px -1px 0px 0px #dedcdc, 0px 2px 0px 0px #9a948c;
+      content: "";
+      position: absolute;
+      z-index: -1;
+      width: 265px;
+      height: 60px;
+      transition: transform 0.01s cubic-bezier(0.79, 0.03, 0.43, 1),
+        background 0.02s cubic-bezier(0.79, 0.03, 0.43, 1);
+      background: linear-gradient(0deg, #e3e0d9, #c4bfb4);
+    }
+    .key::after {
+      width: 285px;
+      left: 0;
+      top: 0;
+      z-index: -2;
+      position: absolute;
+      content: "";
+      filter: blur(1px);
+      border-top: 40px solid #e9e6e0;
+      border-bottom: 42px solid #999286;
+      border-left: 40px solid #cdc8be;
+      border-right: 40px solid #cdc8be;
+    }
+
+    .info{
+      margin-top: 25px;
+      background: #CFC19A; 
+      width: 900px;
+      height: 500px;
+      border-radius: 20px;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.8), inset 0 5px 10px rgba(255, 255, 255, 0.1);
+    }
+
+
+    .cards_item {
+      display: flex;
+      padding: 1rem;
+    }
+
+    .card_image {
+      height: calc(13*1.2rem);
+      padding: 1.2rem 1.2rem 0;
+      position:relative;
+    }
+    .card_image:before,
+    .card_image:after{
+      content: "";
+      position: absolute;
+      width: 20px;
+      left: 60%;
+      top: 0;
+      height: 45px;
+      background: #e6e6e6b8;
+      transform: rotate(45deg);
+    }
+    .card_image:after{
+      transform: rotate(-45deg);
+      top:auto;
+      bottom:-22px;
+      left:40%;
+    }
+    .card_image img {
+      width:100%;
+      height:100%;
+      object-fit:cover;
+    }
+
+    .cards_item {
+      filter:drop-shadow(0 0 5px rgba(0, 0, 0, 0.25));
+    }
+
+
+    .card {
+      background-color: white;
+      border-radius: 0.25rem;
+      display: flex;
+      height: 460px;
+      flex-direction: column;
+      overflow: hidden;
+      padding-left: 30px;
+      background: repeating-linear-gradient(#0000 0 calc(1.2rem - 1px),#66afe1 0 1.2rem) right bottom /100% 100%,linear-gradient(red 0 0) 30px 0/2px 100% #fff;
+      background-repeat: no-repeat;
+      line-height: 1.2rem;
+      -webkit-mask:radial-gradient(circle .8rem at 2px 50%,#0000 98%,#000)0 0/100% 2.4rem;
+    }
+
+    .card_content {
+      padding: 0.9rem;
+    }
+
+    h2.card_title,p {
+      margin: 1.2rem 0;
+    }
+    h2.card_title {
+        font-size: 1.3em;
+        font-family: 'Sofia Sans', sans-serif;
+        font-weight: bolder;
+    }
+
 </style>
 <body>
-  <div class="root">
+  <div class="root-stack">
+    <div class="keyboard">
+      <a style="text-decoration: none;" href="./Bubble.html"><div class="key">Bubble Sort</div></a>
+      <a style="text-decoration: none;" href="./selection.html"><div class="key">Selection Sort</div></a>
+      <a style="text-decoration: none;" href="./insertionsort.html"><div class="key">Insertion Sort</div></a>
+      <a style="text-decoration: none;" href="./mergeSort.html"><div class="key">Merge Sort</div></a>
+      <div class="key">Quick Sort</div>
+      <a style="text-decoration: none;" href="./heap.html"><div class="key">Heap</div></a>
+      <a style="text-decoration: none;" href="./stack.html"><div class="key">Stack</div></a>
+      <a style="text-decoration: none;" href="./queue.html"><div class="key">Queue</div></a>
+      <div class="key">Sliding Window</div>
+      <a style="text-decoration: none;" href="./binarysearch.html"><div class="key">Binary Search</div></a>
+      <div class="key">Two Pointers</div>
+      <div class="key">Linked List</div>
+  </div>
+    <div class="P_container">
     <main class="computerContainer">
       <section class="screenContainer">
         <div class="screenFrame">
           <div class="screen">
             <div class="terminal">
               <div class="outputContainer">
-                <!-- Screen -->
+
               </div>
 
               <div class="card-body" id="visualizer_play_ground" style="overflow-x: auto;">
                 <div class="stack-container">
                   <div class="div p-3" style="padding: 6px;height: auto;">
-                    <!-- Start your Stack, Add Elements using Push -->
                     <div class="stack mt-5" id="stack" style="min-height: 200px;height: auto;border-radius: 0px 0px 10px 10px;border: 4px solid #00fd0d;width: 80px;margin: auto;border-top: none;">
                       
                     </div>
@@ -148,10 +337,33 @@
         <div class="bottomButton"></div>
       </section>
     </main>
+
+    <div class="info">
+      <li class="cards_item">
+        <div class="card">
+          <div class="card_content">
+            <h2 class="card_title">Stack</h2>
+            <div style="font-family: 'Sofia Sans', sans-serif;" class="card_text">
+              <p>A stack is a linear data structure that follows the Last In, First Out (LIFO) principle. It supports the following primary operations:</p>
+              <p>Push: Insert an element at the top of the stack.</p>
+              <p>Pop: Remove and return the top element of the stack.</p>
+              <p>Peek/Top: Retrieve the top element without removing it.</p>
+              <p>isEmpty: Check if the stack is empty.</p>
+              <p style="font-weight: bold;">Time Complexity:</p>
+              <p>Push, Pop, Peek: O(1) (constant time, as operations only involve the top element) isEmpty: O(1)</p>
+              <p style="font-weight: bold;">Space Complexity:</p>
+              <p>O(n), where n is the number of elements in the stack. Stack can be implemented using arrays or linked lists, but arrays are generally more efficient in terms of cache performance.</p>
+            </div>
+          </div>
+        </div>
+      </li>
+    </div>
+
+  </div>
   </div>
   <div style="height: 100px;">
 
   </div>
 </body>
-  <script  src="../src/script.js"></script>
+  <script src="../src/script.js"></script>
 </html>
