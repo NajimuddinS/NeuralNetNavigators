@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>Stack</title>
+  <link rel="stylesheet" href="../styles/style.css">
+   <link rel="stylesheet" href="../styles/bs.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+
+</head>
+<style>
+
+     .stack-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+    .stack {
+        display: flex;
+        flex-direction: column-reverse;
+        align-items: center;
+        margin-top: 20px;
+    }
+    .stack-element {
+        font-family: 'Courier New', Courier, monospace;
+        font-size: large;
+        padding: 15px 25px;
+        margin: 5px;
+        background-color: #ffffff;
+        color: rgb(0, 0, 0);
+        border-radius: 15px;
+        font-weight: bold;
+        opacity: 1;
+    }
+    .stack-element.adding {
+        opacity: 0;
+        transform: scale(0.5);
+    }
+    .stack-element.removing {
+        opacity: 0;
+        transform: scale(1.5);
+        transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+    }
+    .card-footer{
+      padding-top:15px ;
+      border-radius: 15px;
+    }
+    .row1{
+      margin: auto;
+    }
+
+    .input-group-append{
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      margin: auto;
+    }
+    .fbtns{
+      display: flex;
+    }
+
+</style>
+<body>
+  <div class="root">
+    <main class="computerContainer">
+      <section class="screenContainer">
+        <div class="screenFrame">
+          <div class="screen">
+            <div class="terminal">
+              <div class="outputContainer">
+                <!-- Screen -->
+              </div>
+
+              <div class="card-body" id="visualizer_play_ground" style="overflow-x: auto;">
+                <div class="stack-container">
+                  <div class="div p-3" style="padding: 6px;height: auto;">
+                    <!-- Start your Stack, Add Elements using Push -->
+                    <div class="stack mt-5" id="stack" style="min-height: 200px;height: auto;border-radius: 0px 0px 10px 10px;border: 4px solid #00fd0d;width: 80px;margin: auto;border-top: none;">
+                      
+                    </div>
+                  </div>
+                  <div class="msg_area text-center">
+                    <div id="msg_show" class="alert"> 
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+            </div>
+          </div>
+        </div>
+      </section>
+      <div class="card-footer">
+        <div class="input-group">
+          
+          <div class="input-group-append">
+            <input type="text" id="stackInput" class="form-control" placeholder="Enter" required>
+              <button type="button" class="btn button" onclick="push()">
+                <div class="button-top-push">Push</div>
+                <div class="button-bottom-push"></div>
+                <div class="button-base-push"></div>
+              </button>
+              <span style="width: 10px;"> </span>
+              <button type="button" class="btn button" onclick="pop()">
+                <div class="button-top">Pop</div>
+                <div class="button-bottom"></div>
+                <div class="button-base"></div>
+              </button>
+          </div>
+        <div style="display: flex;align-items: center;margin: auto;padding: 20px 0 20px 0;gap: 20px;">
+          <button type="button" class="btn button" onclick="isEmpty_check()">
+            <div class="button-top-empty">Is Empty ?</div>
+            <div class="button-bottom-empty"></div>
+            <div class="button-base-empty"></div>
+          </button>
+
+          <button type="button" class="btn button" onclick="size()">
+            <div class="button-top">Size</div>
+            <div class="button-bottom"></div>
+            <div class="button-base"></div>
+          </button>
+
+          <button type="button" class="btn button" onclick="peek()">
+            <div class="button-top">Peek</div>
+            <div class="button-bottom"></div>
+            <div class="button-base"></div>
+          </button>
+
+        </div>
+      </div>
+      <section class="bodyDecor">
+        <div class="floppyDriveContainer">
+          <div class="floppyDrive">
+            <div class="floppyShade"></div>
+            <div class="floppyShadeDarker"></div>
+            <div class="floppySlot"></div>
+          </div>
+        </div>
+        <div class="logoContainer">
+          <div class="logo"></div>
+        </div>
+      </section>
+      <section class="bottomDecor">
+        <div class="bottomButton"></div>
+      </section>
+    </main>
+  </div>
+  <div style="height: 100px;">
+
+  </div>
+</body>
+  <script  src="../src/script.js"></script>
+</html>
