@@ -7,7 +7,7 @@ AlgoView is a web tool that helps users understand and see how different algorit
 Frontend
 
 ## Deployed App
-[Live Demo on Netlify]()
+[Live Demo on Netlify](https://algoviewcw.netlify.app/)
 
 ## Directory Structure
 
