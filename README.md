@@ -10,12 +10,9 @@ Frontend
 [Live Demo on Netlify](https://algoviewcw.netlify.app/)
 
 ## Directory Structure
-
+Algorithm-Visualizer/ ├─ algorithm/ ├─ assets/ │ ├─ css/ │ ├─ image/ │ ├─ js/ ├─ index.html ├─ various HTML files ├─ README.md
 ## Video Walkthrough of the Project
-[Project Features Walkthrough (7 minutes)](#)
-
-## Video Walkthrough of the Codebase
-[Codebase Walkthrough (6 minutes)](#)
+[Project Features Walkthrough (7 minutes)](https://www.youtube.com/watch?v=jXTMER6xoLY)
 
 ## Features
 - **Algorithm Visualization:** Watch sorting algorithms visually step through their operations.
