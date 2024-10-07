@@ -10,7 +10,7 @@ Frontend
 [Live Demo on Netlify](https://algoviewcw.netlify.app/)
 
 ## Directory Structure
-```console
+```bash
 NeuralNetNavigators/
   ├─ .vscode/
   ├─ assets/
