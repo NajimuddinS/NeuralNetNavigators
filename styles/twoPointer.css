@@ -1,0 +1,209 @@
+/* Improting font from Google fonts */
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap');
+
+body {
+    background-color: #f7f9fc;
+    font-family: "Nunito Sans", sans-serif;
+    margin: 0;
+    padding: 20px;
+    color: #34495e;
+    line-height: 1.5;
+}
+
+h1 {
+    text-align: center;
+    font-size: 1.8em;
+    color: #0a7579;
+    margin-bottom: 20px;
+    animation: fadeIn 1s ease forwards; /* Animation for the main heading */
+}
+
+h2 {
+    font-size: 1.2em;
+    margin: 20px 0px 10px 50px;
+    color: #1167a0;
+    transform: translateX(-20px);
+    animation: slideInLeft 0.6s forwards; /* Animation for h2 elements */
+}
+
+.algorithm-description {
+    max-width: 800px;
+    margin: 0 auto;
+    background: #ffffff;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+p {
+    font-size: 0.9em;
+    margin: 10px 0px 0px 50px;
+    color: #2c3e50;
+    opacity: 0; /* Initially hidden for animation */
+    transform: translateX(20px);
+    animation: slideInRight 0.6s forwards; /* Animation for paragraph elements */
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+li {
+    font-size: 0.9em;
+    margin: 8px 0px 0px 50px;
+    color: #4e504f;
+    opacity: 0;
+    transform: translateX(20px);
+    animation: slideInRight 0.6s forwards;
+    animation-delay: 0.1s;
+}
+
+.highlight {
+    color: #6d2413;
+    font-weight: bold;
+}
+
+.overview-container{
+    margin-top: 50px;
+}
+
+
+
+/* Fade-in animation for main heading */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+
+/* Slide-in animation for headings */
+@keyframes slideInLeft {
+    from {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+
+/* Slide-in animation for text */
+@keyframes slideInRight {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2em;
+    }
+
+    h2 {
+        font-size: 1.3em;
+    }
+
+    .algorithm-description {
+        padding: 15px;
+    }
+
+    p {
+        font-size: 0.8em;
+    }
+
+    li {
+        font-size: 0.8em;
+    }
+}
+
+
+/* Adding more colors for headings */
+h2:nth-child(even) {
+    color: #8e44ad;
+}
+
+h2:nth-child(odd) {
+    color: #41096c;
+}
+
+
+
+/* Array container style */
+#array-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px auto;
+}
+
+input {
+    width: 25rem;
+    height: auto;
+    padding: 10px;
+    margin: 10px;
+    font-size: 18px;
+    border-radius: 7px;
+    border: 1px solid #868286;
+}
+
+button {
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 10px;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+    margin: 10px;
+}
+
+button:hover {
+    background-color: #071729;
+}
+
+.number-box {
+    display: inline-block;
+    margin: 15px 5px 20px 10px;
+    padding: 10px;
+    border: 1px solid #007bff;
+    border-radius: 5px;
+    background-color: #f8f9fa;
+    color: #333;
+    width: 1.3rem;
+    text-align: center;
+}
+
+.highlight-box {
+    background-color: #137972;
+    color: white;
+}
+
+.result-message {
+    margin: auto;
+    font-weight: bold;
+    color: green;
+}
+
+.result-message {
+    align-items: center;
+    align-content: center;
+    display: flex;
+    justify-content: center;
+    font-size: 1.2em;
+    color: #333;
+}

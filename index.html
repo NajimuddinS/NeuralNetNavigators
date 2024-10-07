@@ -17,7 +17,7 @@ body {
     margin: 0;
     padding: 0;
     font-family: Arial, sans-serif;
-    /* background-color: #fffaf7; */
+
 }
 
 .container {
@@ -25,6 +25,23 @@ body {
     align-items: center;
     margin: auto;
 }
+
+.ham{
+  display: none;
+}
+
+@media (max-width: 870px) {
+  .ham{
+  max-width: 1300px;
+  margin: auto;
+  display: flex;
+  position: relative;
+  top:30px;
+  right: 50px;
+  justify-content: end;
+}
+}
+
 
 .hero-section {
     position: relative;
@@ -78,6 +95,28 @@ nav {
     backdrop-filter: blur(6px);
     padding: 15px 25px;
     border-radius:15px;
+}
+
+@media (max-width: 870px) {
+  nav {
+    display: none;
+  }
+
+.nav-links{
+    display: none;
+}
+.nav-links a {
+    display: none;
+}
+
+
+
+
+.learn {
+  display:none;
+}
+
+
 }
 
 .nav-links a {
@@ -333,6 +372,31 @@ nav {
   margin: 8% 0 7% 0;
   
 }
+
+@media (max-width: 1200px) {
+  .decode-text {
+    font-size: 50px;
+  }
+}
+
+@media (max-width: 900px) {
+  .decode-text {
+    font-size: 40px;
+  }
+}
+
+@media (max-width: 600px) {
+  .decode-text {
+    font-size: 30px;
+  }
+}
+
+@media (max-width: 400px) {
+  .decode-text {
+    font-size: 24px;
+  }
+}
+
 .space {
   display: inline-block;
   width: 10px;
@@ -379,9 +443,55 @@ nav {
   color: #000000;                                                
 }
 
+@media (max-width: 768px) {
+            nav {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .nav-links {
+                margin-top: 10px;
+            }
+
+            .nav-links a {
+                display: block;
+                margin-bottom: 10px;
+            }
+
+            .hero-text h1 {
+                font-size: 40px !important;
+                width: 100% !important;
+            }
+
+            .hero-text p {
+                font-size: 30px !important;
+                width: 100% !important;
+            }
+
+            .grid {
+                grid-template-columns: 1fr;
+            }
+
+            .overcard {
+                height: auto;
+            }
+        }
+
+        @media (max-width: 869px) {
+        .grid {
+          grid-template-columns: 1fr;
+          width: 100%;
+          max-width: 400px;
+        }
+      }
+
+
 </style>
 <body>
     <div class="container">
+      <div class="ham">
+        <i class="fa-solid fa-bars fa-2xl" style="color: #ffffff;"></i>
+      </div>
         <nav>
             <img id="logo" style="width: 15%;" src="./assets/Algo.png" alt="">
             <div class="nav-links">
@@ -392,8 +502,9 @@ nav {
                 <a href="#" class="login">Log in</a>
                 <a href="#about" class="learn is--primary button w-inline-block">Learn Now</a>
             </div>
+          </div>
         </nav>
-        </div>
+        
         <div class="hero-section">
             <video autoplay muted loop class="background-video">
                 <source src="./assets/pf.mp4" type="video/mp4">
@@ -503,6 +614,7 @@ nav {
                 </div>
               </article>
             </a>
+            <a style="text-decoration: none;color: #000;" href="./pages/insertionsort.html">
               <article>
                 <div class="overcard">
                   <div class="card">
@@ -535,6 +647,8 @@ nav {
                   </div>
                 </div>
               </article>
+              </a>
+              <a href="./pages/mergeSort.html" style="text-decoration: none;color: #000;">
               <article>
                 <div class="overcard">
                   <div class="card">
@@ -567,6 +681,8 @@ nav {
                   </div>
                 </div>
               </article>
+            </a>
+            <a href="./pages/quickSort.html" style="text-decoration: none;color: #000;">
               <article>
                 <div class="overcard">
                   <div class="card">
@@ -599,6 +715,7 @@ nav {
                   </div>
                 </div>
               </article>
+            </a>
               <a style="text-decoration: none;color: #000;" href="./pages/heap.html">
               <article>
                 <div class="overcard">
@@ -701,6 +818,7 @@ nav {
                 </div>
               </article>
               </a>
+              <a style="text-decoration: none;color: #000;" href="./pages/selection.html">
               <article>
                 <div class="overcard">
                   <div class="card">
@@ -733,6 +851,7 @@ nav {
                   </div>
                 </div>
               </article>
+            </a>
               <a style="color: #000;text-decoration: none;" href="./pages/binarysearch.html">
               <article>
                 <div class="overcard">
@@ -767,6 +886,7 @@ nav {
                 </div>
               </article>
             </a>
+            <a href="./pages/twoPointer.html" style="text-decoration: none;color: #000;">
               <article>
                 <div class="overcard">
                   <div class="card">
@@ -799,6 +919,8 @@ nav {
                   </div>
                 </div>
               </article>
+            </a>
+            <a href="./pages/heap.html" style="text-decoration: none;color: #000;">
               <article>
                 <div class="overcard">
                   <div class="card">
@@ -831,12 +953,13 @@ nav {
                   </div>
                 </div>
               </article>
+            </a>
             </main>
           </div>
     </div>
     </div>
 
-    <div style="height: 500px;">
+    <div style="height: 100px;">
 
     </div>
 </body>
@@ -955,4 +1078,38 @@ decodeText();
 
 setInterval(function(){ decodeText(); }, 3000);
 </script>
+<script src="https://kit.fontawesome.com/e1bd217f15.js" crossorigin="anonymous"></script>
 </html>
+
+<style>
+  .alg-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  width: 100%;
+  max-width: 1200px;
+}
+
+@media (max-width: 1200px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 800px) {
+  .grid {
+    grid-template-columns: 1fr;
+    padding: 0 10px;
+    justify-items: center; /* Center items in the grid */
+  }
+}
+</style>
+
+
