@@ -21,6 +21,11 @@ NeuralNetNavigators/
 ## Video Walkthrough of the Project
 [Project Features Walkthrough (7 minutes)](https://www.youtube.com/watch?v=jXTMER6xoLY)
 
+## Project Logo
+![Algo](https://github.com/user-attachments/assets/dfe89214-9300-4dc7-8b58-86f2b3908a4f)
+
+
+
 ## Features
 - **Algorithm Visualization:** Watch sorting algorithms visually step through their operations.
 - **Interactive Interface:** Easily adjust parameters and input data to see algorithmic changes in real time.
