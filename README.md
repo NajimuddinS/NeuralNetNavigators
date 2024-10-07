@@ -18,11 +18,13 @@ NeuralNetNavigators/
   ├─ styles/
   ├─ index.html
   ├─ README.md
+  
 ## Video Walkthrough of the Project
 [Project Features Walkthrough (7 minutes)](https://www.youtube.com/watch?v=jXTMER6xoLY)
 
 ## Project Logo
-![Algo](https://github.com/user-attachments/assets/dfe89214-9300-4dc7-8b58-86f2b3908a4f)
+![icon](https://github.com/user-attachments/assets/e2565b88-3f02-4b25-86f4-dd7b8d517ac6)
+
 
 
 
