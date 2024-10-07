@@ -10,13 +10,20 @@ Frontend
 [Live Demo on Netlify](https://algoviewcw.netlify.app/)
 
 ## Directory Structure
-Algorithm-Visualizer/ ├─ algorithm/ ├─ assets/ │ ├─ css/ │ ├─ image/ │ ├─ js/ ├─ index.html ├─ various HTML files ├─ README.md
+NeuralNetNavigators/
+  ├─ .vscode/
+  ├─ assets/
+  ├─ pages/
+  ├─ src/
+  ├─ styles/
+  ├─ index.html
+  ├─ README.md
 ## Video Walkthrough of the Project
 [Project Features Walkthrough (7 minutes)](https://www.youtube.com/watch?v=jXTMER6xoLY)
 
 ## Features
 - **Algorithm Visualization:** Watch sorting algorithms visually step through their operations.
-- **Interactive Interface:** Easily adjust parameters and input data to see algorithmic changes in real-time.
+- **Interactive Interface:** Easily adjust parameters and input data to see algorithmic changes in real time.
 - **Multiple Algorithms and Data Structures:** Choose from a variety of sorting algorithms and data structures such as:
   - Two Pointer Approach 
   - Quick Sort
@@ -67,4 +74,12 @@ No external APIs are utilized in this project.
 - **JavaScript:** Adds interactivity and dynamic behavior to the visualizations.
 
 ## Usage
-For the Algorithm Visualizer project, the primary technologies used include HTML, CSS, and JavaScript for creating the foundational structure, styling, and interactivity of the visualizations. These are complemented by Bootstrap for responsive design, D3.js for data-driven manipulation of visuals, and Animate.css for adding dynamic animations.
+For the Algorithm Visualizer project, the primary technologies used include HTML, CSS, and JavaScript to create the foundational structure, styling, and interactivity of the visualizations. These are complemented by Bootstrap for responsive design, D3.js for data-driven manipulation of visuals, and Animate.css for adding dynamic animations.
+
+##Snaps
+![home](https://github.com/user-attachments/assets/57f0adf1-f028-4a40-9c52-05b2619057c2)
+![2](https://github.com/user-attachments/assets/382dad5b-02ad-40c6-a0ea-b901a7d1564a)
+![3](https://github.com/user-attachments/assets/10a1685c-1eb5-4cdc-b9b2-e355c4c5b190)
+![4](https://github.com/user-attachments/assets/22871d91-f54d-475f-b3c0-91925a1dda86)
+![7](https://github.com/user-attachments/assets/51b77560-401d-4c46-9403-3cb67d0c5293)
+
