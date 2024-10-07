@@ -10,6 +10,7 @@ Frontend
 [Live Demo on Netlify](https://algoviewcw.netlify.app/)
 
 ## Directory Structure
+'''console
 NeuralNetNavigators/
   ├─ .vscode/
   ├─ assets/
@@ -18,6 +19,7 @@ NeuralNetNavigators/
   ├─ styles/
   ├─ index.html
   ├─ README.md
+'''
   
 ## Video Walkthrough of the Project
 [Project Features Walkthrough (7 minutes)](https://www.youtube.com/watch?v=jXTMER6xoLY)
