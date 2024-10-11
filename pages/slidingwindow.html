@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>Queue Visualizer</title>
+  <link rel="stylesheet" href="../styles/style.css">
+  <link rel="stylesheet" href="../styles/bs.min.css">
+  <link rel="stylesheet" href="../styles/sliding.css">
+</head>
+<body>
+  <div class="root">
+    <div class="keyboard">
+      <a style="text-decoration: none;" href="./Bubble.html"><div class="key">Bubble Sort</div></a>
+      <a style="text-decoration: none;" href="./selection.html"><div class="key">Selection Sort</div></a>
+      <a style="text-decoration: none;" href="./insertionsort.html"><div class="key">Insertion Sort</div></a>
+      <a style="text-decoration: none;" href="./mergeSort.html"><div class="key">Merge Sort</div></a>
+      <a style="text-decoration: none;" href="./quickSort.html"><div class="key">Quick Sort</div></a>
+      <a style="text-decoration: none;" href="./heap.html"><div class="key">Heap</div></a>
+      <a style="text-decoration: none;" href="./stack.html"><div class="key">Stack</div></a>
+      <a style="text-decoration: none;" href="./queue.html"><div class="key">Queue</div></a>
+      <a style="text-decoration: none;" href="./sliding.html"><div class="key">Sliding Window</div></a>
+      <a style="text-decoration: none;" href="./binarysearch.html"><div class="key">Binary Search</div></a>
+      <a style="text-decoration: none;" href="./twoPointer.html"><div class="key">Two Pointers</div></a>
+      <a style="text-decoration: none;" href="./linkedlist.html"><div class="key">Linked List</div></a>
+  </div>
+  <div class="P_container">
+    <main class="computerContainer">
+      <section class="screenContainer">
+        <div class="screenFrame">
+          <div class="screen">
+            <div class="terminal">
+              <div class="outputContainer">
+                <!-- Screen -->
+              </div>
+
+              <div id="array-container"></div>
+             
+          </div>
+        </div>
+      </section>
+      <div class="card-footer">
+        <div class="input-group">
+
+          <div class="input-group-append">
+            <input type="text" id="array-input" class="form-control" placeholder="Enter" required>
+            <input type="text" id="window-size-input" class="form-control" placeholder="Window Size" required>
+              <button type="button" class="btn button" onclick="submit()">
+                <div class="button-top-push">Enter</div>
+                <div class="button-bottom-push"></div>
+                <div class="button-base-push"></div>
+              </button>
+              <span style="width: 10px;"> </span>
+              <button type="button" class="btn button" onclick="slideWindow()">
+                <div class="button-top">Next Step</div>
+                <div class="button-bottom"></div>
+                <div class="button-base"></div>
+              </button>
+          </div>
+          <div style="display: flex;align-items: center;margin: auto;padding: 20px 0 20px 0;gap: 20px;"></div>
+      </div>
+      <section class="bodyDecor">
+        <div class="floppyDriveContainer">
+          <div class="floppyDrive">
+            <div class="floppyShade"></div>
+            <div class="floppyShadeDarker"></div>
+            <div class="floppySlot"></div>
+          </div>
+        </div>
+        <div class="logoContainer">
+          <div class="logo"></div>
+        </div>
+      </section>
+      <section class="bottomDecor">
+        <div class="bottomButton"></div>
+      </section>
+    </main>
+    
+    <div class="info">
+      <li class="cards_item">
+        <div class="card">
+          <div class="card_content">
+            <h2 class="card_title">Sliding Window</h2>
+            <div style="font-family: 'Sofia Sans', sans-serif;" class="card_text">
+              <p>The Sliding Window technique is a commonly used algorithmic approach for solving problems involving arrays or lists where the solution depends on a contiguous subarray. Instead of recalculating values for each subarray from scratch, it slides a fixed-size window over the array, updating results as the window moves.</p>
+              <p style="font-weight: bold;">Time Complexity:</p>
+              <p>O(n) (each element is processed once as the window slides)</p>
+              <p style="font-weight: bold;">Space Complexity:</p>
+              <p>O(1) (for fixed window size) or O(k) (if storing elements, where k is the window size)</p>
+              <p>This technique is efficient for solving problems like finding the maximum sum of a subarray, checking for specific patterns, or finding an optimal solution for windowed constraints. It reduces unnecessary recomputation by maintaining a running result as the window moves.</p>
+            </div>
+          </div>
+        </div>
+      </li>
+    </div>
+
+  </div>
+  </div>
+  <div style="height: 100px;">
+
+  </div>
+</body>
+<script src="../src/sliding.js"></script>
+</html>
