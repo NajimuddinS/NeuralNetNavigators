@@ -38,3 +38,10 @@
     .arrow{
         margin: 0 10px ;
     }
+    .options{
+        width: 300px;
+        margin: 16px auto;
+    }
+    .optionDiv{
+        text-align: center;
+    }
